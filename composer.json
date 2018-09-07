@@ -14,5 +14,8 @@
         "psr-4": {
             "Codger\\Php\\": "./src"
         }
+    },
+    "require-dev": {
+        "toast/unit": "^1.3"
     }
 }
