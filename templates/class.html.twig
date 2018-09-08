@@ -1,0 +1,40 @@
+<?php
+
+{% if namespace %}
+namespace {{ namespace }};
+{% endif %}
+
+{% if uses_namespaces %}
+{% for uses_namespace in uses_namespaces %}
+use {{ uses_namespace }};
+{% endfor %}
+
+{% endif %}
+{% if final %}final {% endif %}{% if abstract %}abstract {% endif %}class {{ name }}{% if extends %} extends {{ extends }}{% endif %}{% if implements %} implements {{ implements }}{% endif %}
+
+{{ '{' }}
+{% if uses_traits %}
+{% for trait in uses_traits %}
+    use {{ trait }};
+{% endfor %}
+
+{% endif %}
+{% if constants %}
+{% for name, value in constants %}
+    const {{ name }} = {{ value | raw }};
+{% endfor %}
+
+{% endif %}
+{% if variables %}
+{% for variable in variables %}
+    {{ variable.visibility }} ${{ variable.name }}{% if variable.value != 'NULL' %} = {{ variable.value | raw }}{% endif %};
+{% endfor %}
+
+{% endif %}
+{% if methods %}
+{% for method in methods %}
+{{ method }}
+{% endfor %}
+{% endif %}
+}
+
