@@ -9,7 +9,9 @@
             "email": "marijn@monomelodies.nl"
         }
     ],
-    "require": {},
+    "require": {
+        "codger/generate": "^0.1.0"
+    },
     "autoload": {
         "psr-4": {
             "Codger\\Php\\": "./src"
