@@ -59,6 +59,11 @@ class Method extends Recipe
         return $this->setVisibility('public');
     }
 
+    public function isStatic(bool $static = true) : Method
+    {
+        return $this->set('static', $static);
+    }
+
     public function isFinal(bool $status = true) : Method
     {
         $this->variables->final = $status;
