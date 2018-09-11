@@ -17,16 +17,22 @@ class Method extends Recipe
         $this->variables->name = $name;
         $this->variables->visibility = 'public';
         if (isset($declaration)) {
-            $reflection = new ReflectionFunction;
-            if ($reflection->hasReturnType()) {
-                $return = $reflection->getReturnType();
-                $this->variables->returntype = $return;
-                $this->variables->nullable = $return->allowsNull();
-            }
-            foreach ($reflection->getParameters() as $parameter) {
-                $this->addArgument(new Argument($twig, $parameter));
-            }
+            $this->initFromClosure($declaration);
         }
+    }
+
+    public function initFromClosure(callable $declaration) : Method
+    {
+        $reflection = new ReflectionFunction($declaration);
+        if ($reflection->hasReturnType()) {
+            $return = $reflection->getReturnType();
+            $this->variables->returntype = $return;
+            $this->variables->nullable = $return->allowsNull();
+        }
+        foreach ($reflection->getParameters() as $parameter) {
+            $this->addArgument(new Argument($this->twig, $parameter));
+        }
+        return $this;
     }
 
     public function setVisibility(string $visibility) : Method
