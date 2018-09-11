@@ -77,10 +77,10 @@ class Klass extends Recipe
         return $this;
     }
 
-    public function addMethod($name, callable $callback) : Klass
+    public function addMethod($name, callable ...$callback) : Klass
     {
-        $method = new Method($name, $this->twig);
-        $callback($method);
+        $method = new Method($name, $this->twig, isset($callback[1]) ? $callback[0] : null);
+        $callback[isset($callback[1]) ? 1 : 0]($method);
         $this->variables->methods[$name] = $method->render();
         return $this;
     }
