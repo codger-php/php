@@ -11,6 +11,7 @@ class Argument extends Recipe
 
     public function __construct(Twig_Environment $twig, ReflectionParameter $parameter = null)
     {
+        parent::__construct($twig);
         $this->variables = (object)[
             'variadic' => false,
             'default' => false,
@@ -19,6 +20,8 @@ class Argument extends Recipe
         ];
         if (isset($parameter)) {
             $this->isVariadic($parameter->isVariadic());
+            $this->variables->name = $parameter->name;
+            $this->variables->optional = $parameter->isOptional();
         }
     }
 
