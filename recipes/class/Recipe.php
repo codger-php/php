@@ -15,13 +15,12 @@ return function () : Codger\Php\Klass {
         ->isFinal()
         ->isAbstract()
         ->usesTraits('Foo\Foobar')
-        ->addMethod('foo', function ($method) {
-            $method->initFromClosure(function (string $bar = null) : bool {})
+        ->addMethod('foo', function (string $bar = null) : bool {}, function ($method) {
+            $method->isPrivate()
                 ->setBody(<<<EOT
             return false;
 EOT
-                )
-                ->isPrivate();
+                );
         })
         ->definesConstants([
             'FOO' => 'bar',
