@@ -81,8 +81,13 @@ class Klass extends Recipe
     {
         $method = new Method($name, $this->twig);
         $callback($method);
-        $this->variables->methods[] = $method->render();
+        $this->variables->methods[$name] = $method->render();
         return $this;
+    }
+
+    public function getMethod(string $name) :? Method
+    {
+        return $this->variables->methods[$name] ?? null;
     }
 
     public function render() : string
