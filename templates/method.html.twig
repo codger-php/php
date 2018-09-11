@@ -1,4 +1,4 @@
-    {{ visibility }} {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}function {{ name }}({{ arguments }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
+    {{ visibility }} {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}{% if static %} static{% endif %}function {{ name }}({{ arguments }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
 
     {
 {{ body }}
