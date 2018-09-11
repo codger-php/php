@@ -4,6 +4,7 @@ namespace Codger\Php;
 
 use Twig_Environment;
 use DomainException;
+use ReflectionFunction;
 
 class Method extends Recipe
 {
@@ -16,6 +17,15 @@ class Method extends Recipe
         $this->variables->name = $name;
         $this->variables->visibility = 'public';
         if (isset($declaration)) {
+            $reflection = new ReflectionFunction;
+            if ($reflection->hasReturnType()) {
+                $return = $reflection->getReturnType();
+                $this->variables->returntype = $return;
+                $this->variables->nullable = $return->allowsNull();
+            }
+            foreach ($reflection->getParameters() as $parameter) {
+                $this->addArgument(new Argument($twig, $parameter));
+            }
         }
     }
 
@@ -70,6 +80,16 @@ class Method extends Recipe
     {
         $this->arguments[] = $argument;
         return $this;
+    }
+
+    public function render() : string
+    {
+        $arguments = [];
+        foreach ($this->arguments as $argument) {
+            $arguments[] = $argument->render();
+        }
+        $this->variables->arguments = implode(', ', $arguments);
+        return parent::render();
     }
 }
 
