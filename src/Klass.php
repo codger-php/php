@@ -23,6 +23,7 @@ class Klass extends Recipe
      * Set the namespace of this class.
      *
      * @param string $namespace
+     * @return Codger\Php\Klass
      */
     public function setNamespace(string $namespace) : Klass
     {
@@ -46,6 +47,7 @@ class Klass extends Recipe
      * Set the name of this class.
      *
      * @param string $name
+     * @return Codger\Php\Klass
      */
     public function setName(string $name) : Klass
     {
@@ -57,6 +59,7 @@ class Klass extends Recipe
      * Define whether to mark the class as `final`.
      *
      * @param bool $final Defaults to true.
+     * @return Codger\Php\Klass
      */
     public function isFinal(bool $final = true) : Klass
     {
@@ -68,6 +71,7 @@ class Klass extends Recipe
      * Define whether to mark the class as `abstract`.
      *
      * @param bool $abstract Defaults to true.
+     * @return Codger\Php\Klass
      */
     public function isAbstract(bool $abstract = true) : Klass
     {
@@ -79,6 +83,7 @@ class Klass extends Recipe
      * Set the parent class. To unset, pass an empty string.
      *
      * @param string $class
+     * @return Codger\Php\Klass
      */
     public function extendsClass(string $class) : Klass
     {
@@ -90,6 +95,7 @@ class Klass extends Recipe
      * Define interfaces to implement.
      *
      * @param string ...$interfaces
+     * @return Codger\Php\Klass
      */
     public function implementsInterfaces(string ...$interfaces) : Klass
     {
@@ -101,6 +107,7 @@ class Klass extends Recipe
      * Define which traits to `use`.
      *
      * @param string ...$traits
+     * @return Codger\Php\Klass
      */
     public function usesTraits(string ...$traits) : Klass
     {
@@ -112,6 +119,7 @@ class Klass extends Recipe
      * Define class constants. Should be passed as a hash of name/value pairs.
      *
      * @param array $constants
+     * @return Codger\Php\Klass
      */
     public function definesConstants(array $constants) : Klass
     {
@@ -129,6 +137,7 @@ class Klass extends Recipe
      * @param string|null $value Optional initial value.
      * @param string $visibility `public`, `protected` or `private`. Defaults to
      *  `public`.
+     * @return Codger\Php\Klass
      */
     public function defineVariable(string $name, string $value = null, string $visibility = 'public') : Klass
     {
@@ -147,6 +156,7 @@ class Klass extends Recipe
      * @param string $name
      * @param callable ...$callback One or two callbacks, the last receiving the
      *  new method object, the optional first defining the signature.
+     * @return Codger\Php\Klass
      */
     public function addMethod(string $name, callable ...$callback) : Klass
     {
