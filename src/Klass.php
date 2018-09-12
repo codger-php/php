@@ -4,6 +4,8 @@ namespace Codger\Php;
 
 class Klass extends Recipe
 {
+    use Quote;
+
     /** @var string */
     protected $template = 'class.html.twig';
 
@@ -137,12 +139,16 @@ class Klass extends Recipe
      * @param string|null $value Optional initial value.
      * @param string $visibility `public`, `protected` or `private`. Defaults to
      *  `public`.
+     * @param string|null $doccomment Optional doccomment.
      * @return Codger\Php\Klass
      */
-    public function defineProperty(string $name, string $value = null, string $visibility = 'public') : Klass
+    public function defineProperty(string $name, string $value = null, string $visibility = 'public', string $doccomment = null) : Klass
     {
-        $value = $this->quote($value);
-        $this->variables->properties[] = compact('name', 'visibility', 'value');
+        $property = new Property($this->twig, $name, $value, $visibility);
+        if ($doccomment) {
+            $property->setDoccomment($doccoment);
+        }
+        $this->variables->properties[] = $property;
         return $this;
     }
 
@@ -190,24 +196,10 @@ class Klass extends Recipe
         array_walk($this->variables->methods, function (&$method) {
             $method = $method->render();
         });
+        array_walk($this->variables->properties, function (&$property) {
+            $property = $property->render();
+        });
         return preg_replace("@\n}\n$@m", "}\n", parent::render());
-    }
-
-    /**
-     * Internal helper to properly quote a value.
-     *
-     * @param string|null $unquoted
-     * @return string
-     */
-    protected function quote(string $unquoted = null) : string
-    {
-        if (is_null($unquoted)) {
-            return 'NULL';
-        }
-        if (is_numeric($unquoted)) {
-            return (string)$unquoted;
-        }
-        return "'".str_replace("'", "\'", $unquoted)."'";
     }
 }
 
