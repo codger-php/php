@@ -7,6 +7,8 @@ use ReflectionParameter;
 
 class Argument extends Recipe
 {
+    use Doccomment;
+
     protected $template = 'argument.html.twig';
 
     public function __construct(Twig_Environment $twig, ReflectionParameter $parameter = null)
