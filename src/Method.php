@@ -82,6 +82,16 @@ class Method extends Recipe
         return $this;
     }
 
+    public function setReturnType(string $type) : Method
+    {
+        return $this->set('returntype', $type);
+    }
+
+    public function setNullable(bool $nullable = true) : Method
+    {
+        return $this->set('nullable', $nullable);
+    }
+
     public function setBody(string $body) : Method
     {
         $body = trim($body);
