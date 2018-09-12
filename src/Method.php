@@ -76,6 +76,12 @@ class Method extends Recipe
         return $this;
     }
 
+    public function addArgument(Argument $argument) : Method
+    {
+        $this->arguments[] = $argument;
+        return $this;
+    }
+
     public function setBody(string $body) : Method
     {
         $body = trim($body);
@@ -84,12 +90,6 @@ class Method extends Recipe
             $line = "        $line";
         }
         $this->variables->body = implode("\n", $lines);
-        return $this;
-    }
-
-    public function addArgument(Argument $argument) : Method
-    {
-        $this->arguments[] = $argument;
         return $this;
     }
 
