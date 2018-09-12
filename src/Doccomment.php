@@ -11,7 +11,7 @@ trait Doccomment
             array_walk($lines, function (string &$line) {
                 $line = trim($line);
                 $line = " * $line";
-            }
+            });
         } else {
             $lines = ["/** {$lines[0]} */"];
         }
