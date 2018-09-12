@@ -25,9 +25,9 @@ use {{ uses_namespace }};
 {% endfor %}
 
 {% endif %}
-{% if variables %}
-{% for variable in variables %}
-    {{ variable.visibility }} ${{ variable.name }}{% if variable.value != 'NULL' %} = {{ variable.value | raw }}{% endif %};
+{% if properties %}
+{% for property in properties %}
+    {{ property.visibility }} ${{ property.name }}{% if property.value != 'NULL' %} = {{ property.value | raw }}{% endif %};
 {% endfor %}
 
 {% endif %}
