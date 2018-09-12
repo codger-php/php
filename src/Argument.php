@@ -13,6 +13,7 @@ class Argument extends Recipe
     {
         parent::__construct($twig);
         $this->variables = (object)[
+            'type' => false,
             'variadic' => false,
             'default' => false,
             'name' => false,
@@ -22,6 +23,7 @@ class Argument extends Recipe
             $this->isVariadic($parameter->isVariadic());
             $this->variables->name = $parameter->name;
             $this->variables->optional = $parameter->isOptional();
+            $this->variables->type = $parameter->getType();
         }
     }
 
