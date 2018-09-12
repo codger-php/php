@@ -146,7 +146,7 @@ class Klass extends Recipe
     {
         $property = new Property($this->twig, $name, $value, $visibility);
         if ($doccomment) {
-            $property->setDoccomment($doccoment);
+            $property->setDoccomment($doccomment);
         }
         $this->variables->properties[] = $property;
         return $this;
