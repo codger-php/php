@@ -33,7 +33,7 @@ use {{ uses_namespace }};
 {% endif %}
 {% if methods %}
 {% for method in methods %}
-{{ method }}
+{{ method | raw }}
 {% endfor %}
 {% endif %}
 }
