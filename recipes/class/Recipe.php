@@ -1,7 +1,9 @@
 <?php
 
-return function () : Codger\Php\Klass {
-    $recipe = new Codger\Php\Klass;
+use Codger\Php\Klass;
+use Codger\Php\Property;
+return function () : Klass {
+    $recipe = new Klass;
     $recipe->setNamespace('Foo\Bar')
         ->usesNamespaces('Bar\Foo')
         ->extendsClass('Something')
