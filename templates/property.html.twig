@@ -1,0 +1,2 @@
+{% if doccomment %}    {{ doccomment }}
+{% endif %}    {{ visibility }} ${{ name }}{% if default != 'NULL' %} = {{ default | raw }}{% endif %};
