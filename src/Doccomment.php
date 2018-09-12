@@ -4,7 +4,7 @@ namespace Codger\Php;
 
 trait Doccomment
 {
-    public function addDoccomment(string $comment) : Recipe
+    public function setDoccomment(string $comment) : Recipe
     {
         $lines = explode("\n", $comment);
         if (count($lines) > 1) {
