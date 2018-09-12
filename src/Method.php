@@ -8,6 +8,8 @@ use ReflectionFunction;
 
 class Method extends Recipe
 {
+    use Doccomment;
+
     protected $template = 'method.html.twig';
     protected $arguments = [];
 
