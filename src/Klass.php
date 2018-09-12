@@ -15,7 +15,7 @@ class Klass extends Recipe
     public function __construct()
     {
         parent::__construct();
-        $this->variables->variables = [];
+        $this->variables->properties = [];
         $this->variables->methods = [];
     }
 
@@ -131,18 +131,18 @@ class Klass extends Recipe
     }
 
     /**
-     * Define a class variable. A value of `null` means 'no initial value.
+     * Define a class property. A value of `null` means 'no initial value.
      *
-     * @param string $name Name of the variable. Omit the dollar sign.
+     * @param string $name Name of the property. Omit the dollar sign.
      * @param string|null $value Optional initial value.
      * @param string $visibility `public`, `protected` or `private`. Defaults to
      *  `public`.
      * @return Codger\Php\Klass
      */
-    public function defineVariable(string $name, string $value = null, string $visibility = 'public') : Klass
+    public function defineProperty(string $name, string $value = null, string $visibility = 'public') : Klass
     {
         $value = $this->quote($value);
-        $this->variables->variables[] = compact('name', 'visibility', 'value');
+        $this->variables->properties[] = compact('name', 'visibility', 'value');
         return $this;
     }
 
