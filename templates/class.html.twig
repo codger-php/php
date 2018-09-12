@@ -24,11 +24,8 @@ use {{ uses_namespace }};
     const {{ name }} = {{ value | raw }};
 {% endfor %}
 
-{% endif %}
-{% if properties %}
-{% for property in properties %}
-    {{ property.visibility }} ${{ property.name }}{% if property.value != 'NULL' %} = {{ property.value | raw }}{% endif %};
-{% endfor %}
+{% endif %}{% if properties %}{% for property in properties %}
+{{ property | raw }}{% endfor %}
 
 {% endif %}
 {% if methods %}
