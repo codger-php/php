@@ -6,8 +6,8 @@ return function () : Codger\Php\Klass {
         ->usesNamespaces('Bar\Foo')
         ->extendsClass('Something')
         ->implementsInterfaces('Bla', 'Barf')
-        ->defineVariable('bla', 'blaat')
-        ->defineVariable('blarps', null, 'private')
+        ->defineProperty('bla', 'blaat')
+        ->defineProperty('blarps', null, 'private')
         ->addMethod('foobar', function (Codger\Php\Method $method) : void {
             $method->setBody("return true;");
         })
