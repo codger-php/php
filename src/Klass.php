@@ -80,7 +80,10 @@ class Klass extends Recipe
     public function addMethod($name, callable ...$callback) : Klass
     {
         $method = new Method($name, $this->twig, isset($callback[1]) ? $callback[0] : null);
-        $callback[isset($callback[1]) ? 1 : 0]($method);
+        $body = $callback[isset($callback[1]) ? 1 : 0]($method);
+        if (strlen($body)) {
+            $method->setBody($body);
+        }
         $this->variables->methods[$name] = $method->render();
         return $this;
     }
