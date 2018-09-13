@@ -18,7 +18,7 @@ abstract class Language
     {
         switch (substr($string, -1)) {
             case 'y':
-                return substr($string, 0,.-1).'ies';
+                return substr($string, 0, -1).'ies';
             default:
                 return "{$string}s";
         }
@@ -48,7 +48,7 @@ abstract class Language
      */
     public static function convert(string $input, int $to) : string
     {
-        $string = self::normalize($string);
+        $string = self::normalize($input);
         $parts = explode(' ', $string);
         switch ($to) {
             case self::TYPE_NAMESPACE:
