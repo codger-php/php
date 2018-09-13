@@ -7,6 +7,7 @@ abstract class Language
     const TYPE_NAMESPACE = 1;
     const TYPE_TABLE = 2;
     const TYPE_VARIABLE = 4;
+    const TYPE_PATH = 8;
 
     /**
      * Returns a pluralized version of the specified `$string`.
@@ -50,19 +51,18 @@ abstract class Language
     {
         $string = self::normalize($input);
         $parts = explode(' ', $string);
+        array_walk($parts, function (&$part) {
+            $part = ucfirst($part);
+        });
         switch ($to) {
             case self::TYPE_NAMESPACE:
-                array_walk($parts, function (&$part) {
-                    $part = ucfirst($part);
-                });
                 return implode('\\', $parts);
             case self::TYPE_TABLE:
-                return implode('_', $parts);
+                return strtolower(implode('_', $parts));
             case self::TYPE_VARIABLE:
-                array_walk($parts, function (&$part) {
-                    $part = ucfirst($part);
-                });
                 return lcfirst(implode('', $parts));
+            case self::TYPE_PATH:
+                return implode('/', $parts);
             default:
                 throw new DomainException("Please use one of the `TYPE_` constants on the `Codger\Php\Language` class as 2nd parameter.");
         }
@@ -76,7 +76,7 @@ abstract class Language
      */
     private static function normalize(string $string) : string
     {
-        return strtolower(preg_replace('@[\/_]@', ' ', $string));
+        return strtolower(str_replace(['\\', '/', '_'], ' ', $string));
     }
 }
 
