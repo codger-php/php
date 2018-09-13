@@ -76,7 +76,7 @@ abstract class Language
      */
     private static function normalize(string $string) : string
     {
-        return strtolower(preg_replace('@[\\/_]@', ' ', $string));
+        return strtolower(preg_replace('@[\/_]@', ' ', $string));
     }
 }
 
