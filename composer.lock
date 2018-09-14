@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9b26053293aa2f0bfe730b480551ff0",
+    "content-hash": "4daa3d3bc75a3a81b4b3b1da15bc6961",
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "afec3f311f14f38c22ea7cdd046d75d2ce448cea"
+                "reference": "549c3b5d2456b5f8271cc892266f54ddbb8ad4e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/afec3f311f14f38c22ea7cdd046d75d2ce448cea",
-                "reference": "afec3f311f14f38c22ea7cdd046d75d2ce448cea",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/549c3b5d2456b5f8271cc892266f54ddbb8ad4e3",
+                "reference": "549c3b5d2456b5f8271cc892266f54ddbb8ad4e3",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2018-09-14T08:05:37+00:00"
+            "time": "2018-09-14T11:49:42+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
