@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "549c3b5d2456b5f8271cc892266f54ddbb8ad4e3"
+                "reference": "bc0e7976f7440527b15e3f46c2b1163e21118a64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/549c3b5d2456b5f8271cc892266f54ddbb8ad4e3",
-                "reference": "549c3b5d2456b5f8271cc892266f54ddbb8ad4e3",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/bc0e7976f7440527b15e3f46c2b1163e21118a64",
+                "reference": "bc0e7976f7440527b15e3f46c2b1163e21118a64",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2018-09-14T11:49:42+00:00"
+            "time": "2018-09-14T12:00:30+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
