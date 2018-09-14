@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "codger/generate": "^0.1.0"
+        "codger/generate": "^0.2.0"
     },
     "autoload": {
         "psr-4": {
