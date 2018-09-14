@@ -2,6 +2,8 @@
 
 use Codger\Php\Klass;
 use Codger\Php\Property;
+
+/** Example recipe for generating a PHP class */
 return function () : Klass {
     $recipe = new Klass;
     $recipe->setNamespace('Foo\Bar')
