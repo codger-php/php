@@ -19,5 +19,10 @@ trait Doccomment
         }
         return $this->set('doccomment', implode("\n", $lines));
     }
+
+    public function appendDoccomment(string $comment) : Recipe
+    {
+        return $this->setDoccomment($this->get('doccomment')."\n\n$comment");
+    }
 }
 
