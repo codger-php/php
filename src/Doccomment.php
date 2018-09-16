@@ -10,10 +10,12 @@ trait Doccomment
         if (count($lines) > 1) {
             array_walk($lines, function (string &$line) {
                 $line = trim($line);
-                $line = " * $line";
+                $line = "     * $line";
             });
+            array_unshift($lines, '    /**');
+            $lines[] = "     */\n";
         } else {
-            $lines = ["/** {$lines[0]} */"];
+            $lines = ["    /** {$lines[0]} */\n"];
         }
         return $this->set('doccomment', implode("\n", $lines));
     }
