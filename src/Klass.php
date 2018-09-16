@@ -5,6 +5,7 @@ namespace Codger\Php;
 class Klass extends Recipe
 {
     use Quote;
+    use Doccomment;
 
     /** @var string */
     protected $template = 'class.html.twig';
