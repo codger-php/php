@@ -17,7 +17,7 @@ trait Doccomment
     {
         static $inited = false;
         if (!$inited) {
-            $this->twig->addFiler(new Twig_SimpleFilter('formatDoccomment', function (string $comment, bool $indent = true) : string {
+            $this->twig->addFilter(new Twig_SimpleFilter('formatDoccomment', function (string $comment, bool $indent = true) : string {
                 $lines = explode("\n", $comment);
                 $indent = $indent ? '    ' : '';
                 if (count($lines) > 1) {
