@@ -1,3 +1,4 @@
+{% if doccomment %}{{ doccomment }}{% endif %}
     {{ visibility }} {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}{% if static %} static{% endif %}function {{ name }}({{ arguments }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
 
     {
