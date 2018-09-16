@@ -10,6 +10,7 @@ use {{ uses_namespace }};
 {% endfor %}
 
 {% endif %}
+{% if doccomment %}{{ doccomment | formatDoccomment(false) }}{% endif %}
 {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}class {{ name }}{% if extends %} extends {{ extends }}{% endif %}{% if implements %} implements {{ implements }}{% endif %}
 
 {{ '{' }}
