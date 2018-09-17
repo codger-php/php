@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "a473cffba097e98276811a05d9aecc03",
@@ -239,16 +239,16 @@
     "packages-dev": [
         {
             "name": "gentry/gentry",
-            "version": "0.13.3",
+            "version": "0.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gentry-php/gentry.git",
-                "reference": "3b75bb23e3629641672b669a8246034fe6742e11"
+                "reference": "be0c8a5b80fc03a532924cbda4b4c8dd50e63c8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gentry-php/gentry/zipball/3b75bb23e3629641672b669a8246034fe6742e11",
-                "reference": "3b75bb23e3629641672b669a8246034fe6742e11",
+                "url": "https://api.github.com/repos/gentry-php/gentry/zipball/be0c8a5b80fc03a532924cbda4b4c8dd50e63c8c",
+                "reference": "be0c8a5b80fc03a532924cbda4b4c8dd50e63c8c",
                 "shasum": ""
             },
             "require": {
@@ -282,7 +282,7 @@
                 }
             ],
             "description": "PHP unit test generation tools",
-            "time": "2018-07-19T14:46:37+00:00"
+            "time": "2018-09-17T12:08:10+00:00"
         },
         {
             "name": "gentry/toast",
