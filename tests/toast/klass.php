@@ -3,9 +3,7 @@
 use Gentry\Gentry\Wrapper;
 use Codger\Php\Klass;
 
-/** TODO: use Gentry Wrapper once it is not broken anymore */
-//$klass = Wrapper::createObject(Klass::class);
-$klass = new Klass;
+$klass = Wrapper::createObject(Klass::class);
 
 /** Test Klass */
 return function () use ($klass) : Generator {
