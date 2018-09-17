@@ -4,86 +4,97 @@ use Gentry\Gentry\Wrapper;
 use Codger\Php\Klass;
 use Codger\Php\Method;
 
-$klass = Wrapper::createObject(Klass::class);
+/** TODO: use Gentry Wrapper once it is not broken anymore */
+//$klass = Wrapper::createObject(Klass::class);
+$klass = new Klass;
 
 /** Test Klass */
 return function () use ($klass) : Generator {
-    /** Test setNamespace method*/
+    /** setNamespace sets a namespace for our class */
     yield function () use ($klass) {
-        $result = $klass->setNamespace('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test usesNamespaces method*/
-    yield function () use ($klass) {
-        $result = $klass->usesNamespaces('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test setName method*/
-    yield function () use ($klass) {
-        $result = $klass->setName('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test isFinal method*/
-    yield function () use ($klass) {
-        $result = $klass->isFinal(true);
-        assert($result instanceof Klass);
-    };
-    
-    /** Test isAbstract method*/
-    yield function () use ($klass) {
-        $result = $klass->isAbstract(true);
-        assert($result instanceof Klass);
-    };
-    
-    /** Test extendsClass method*/
-    yield function () use ($klass) {
-        $result = $klass->extendsClass('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test implementsInterfaces method*/
-    yield function () use ($klass) {
-        $result = $klass->implementsInterfaces('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test usesTraits method*/
-    yield function () use ($klass) {
-        $result = $klass->usesTraits('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test definesConstants method*/
-    yield function () use ($klass) {
-        $result = $klass->definesConstants(['text' => 'blarps']);
-        assert($result instanceof Klass);
-    };
-    
-    /** Test defineProperty method*/
-    yield function () use ($klass) {
-        $result = $klass->defineProperty('blarps');
-        assert($result instanceof Klass);
-    };
-    
-    /** Test addMethod method*/
-    yield function () use ($klass) {
-        $result = $klass->addMethod('blarps', function () { return 'blarps'; });
-        assert($result instanceof Klass);
-    };
-    
-    /** Test getMethod method*/
-    yield function () use ($klass) {
-        $result = $klass->getMethod('blarps');
-        assert($result instanceof Method);
-    };
-    
-    /** Test render method*/
-    yield function () use ($klass) {
+        $klass->setNamespace('Unittest');
         $result = $klass->render();
-        assert(is_string($result));
+        assert(strpos($result, 'namespace Unittest'));
+    };
+    
+    /** usesNamespaces lets us use a namespace */
+    yield function () use ($klass) {
+        $klass->usesNamespaces('Tools');
+        $result = $klass->render();
+        assert(strpos($result, 'use Tools'));
+    };
+    
+    /** setName lets us name our class */
+    yield function () use ($klass) {
+        $klass->setName('Technology');
+        $result = $klass->render();
+        assert(strpos($result, 'class Technology'));
+    };
+    
+    /** isFinal lets us define a final class */
+    yield function () use ($klass) {
+        $klass->isFinal(true);
+        $result = $klass->render();
+        assert(strpos($result, 'final class Technology'));
+    };
+    
+    /** isAbstract defines our class as abstract */
+    yield function () use ($klass) {
+        $klass->isAbstract(true);
+        $result = $klass->render();
+        assert(strpos($result, 'final abstract class Technology'));
+    };
+    
+    /** extendsClass lets our class extend another */
+    yield function () use ($klass) {
+        $klass->extendsClass('Work');
+        $result = $klass->render();
+        assert(strpos($result, 'final abstract class Technology extends Work'));    
+    };
+    
+    /** implementsInterfaces lets us implement multiple interfaces */
+    yield function () use ($klass) {
+        $klass->implementsInterfaces('Secure', 'Fast');
+        $result = $klass->render();
+        assert(strpos($result, 'final abstract class Technology extends Work implements Secure, Fast'));
+    };
+    
+    /** usesTraits lets us define traits to use */
+    yield function () use ($klass) {
+        $klass->usesTraits('PasswordGenerator', 'LoginScript');
+        $result = $klass->render();
+        assert(strpos($result, 'use PasswordGenerator'));
+        assert(strpos($result, 'use LoginScript'));
+    };
+    
+    /** definesConstants lets us set constants */
+    yield function () use ($klass) {
+        $klass->definesConstants(['host' => 'localhost']);
+        $result = $klass->render();
+        assert(strpos($result, "const host = 'localhost'"));
+    };
+    
+    /** defineProperty lets us set properties with visibility of our choice */
+    yield function () use ($klass) {
+        $klass->defineProperty('user', null, 'private');
+        $result = $klass->render();
+        assert(strpos($result, 'private $user'));
+    };
+    
+    /** addMethod lets us create a method and allows us to retrieve it */
+    yield function () use ($klass) {
+        $klass->addMethod('login', function (string $user, string $pass) : bool {}, function ($method) {
+            $method->setBody(<<<EOT
+        if (\$user === 'test' && \$pass === 'blarps') {
+    return true;
+} else {
+    return false;
+}
+EOT
+            );
+        });
+        $result = $klass->getMethod('login')->render();
+        assert(strpos($result, 'function login(string $user, string $pass) : bool'));
     };
 };
 
