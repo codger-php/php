@@ -2,7 +2,6 @@
 
 use Gentry\Gentry\Wrapper;
 use Codger\Php\Klass;
-use Codger\Php\Method;
 
 /** TODO: use Gentry Wrapper once it is not broken anymore */
 //$klass = Wrapper::createObject(Klass::class);
