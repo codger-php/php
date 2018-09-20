@@ -8,7 +8,7 @@ $twig = new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templ
 $method = Wrapper::createObject(Method::class, 'login', $twig);
 
 /** Test Method */
-return function () use ($method) : Generator {
+return function () use ($twig, $method) : Generator {
     /** setVisibility allows us to modify the visibility */
     yield function () use ($method) {
         $method->setVisibility('private');
@@ -92,5 +92,18 @@ EOT
         assert(strpos($result, 'if'));
         assert(strpos($result, 'else'));
     };    
+    
+    /** addArgument lets us set arguments for our method */
+    yield function () use ($twig, $method) {
+        class TestMethod extends Method {
+            public function testMe(string $user) {
+            }
+        }
+        $parameter = new ReflectionParameter([TestMethod::class, 'testMe'], 'user');
+        $argument = Wrapper::createObject(Codger\Php\Argument::class, $twig, $parameter);
+        $method->addArgument($argument);
+        $result = $method->render();
+        assert(strpos($result, 'public final abstract static function login(string $user) :? string'));
+    };
 };
 
