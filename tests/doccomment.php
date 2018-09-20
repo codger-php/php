@@ -17,5 +17,12 @@ return function () use ($trait) : Generator {
         $result = $trait->render();
         assert(strpos($result, '/** Work in progress */'));
     };
+    
+    /** appendDoccomment lets us add to an existing block */
+    yield function () use ($trait) { 
+        $trait->appendDoccomment(' but idgaf');
+        $result = $trait->render();
+        assert(strpos($result, '/** Work in progress but idgaf */'));
+    };
 };
 
