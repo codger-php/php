@@ -105,5 +105,12 @@ EOT
         $result = $method->render();
         assert(strpos($result, 'public final abstract static function login(string $user) :? string'));
     };
+    
+    /** initFromClosure can retrieve information from a callable */
+    yield function () use ($method) {
+        $callable = function (string $pass) {};
+        $result = $method->initFromClosure($callable)->render();
+        assert(strpos($result, 'public final abstract static function login(string $user, string $pass) :? string'));
+    };
 };
 
