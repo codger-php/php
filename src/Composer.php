@@ -14,7 +14,7 @@ class Composer
 
     public function hasDependency(string $name) : bool
     {
-        return array_key_exists($name, $this->composer->require);
+        return array_key_exists($name, $this->composer->require) || array_key_exists($name, $this->composer->{'require-dev'});
     }
 
     public function addDependency(string $name) : void
