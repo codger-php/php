@@ -18,9 +18,12 @@ class Composer
             || (isset($this->composer->{'require-dev'}) && array_key_exists($name, $this->composer->{'require-dev'}));
     }
 
-    public function addDependency(string $name) : void
+    public function addDependency(string $name, bool $dev = false) : void
     {
-        exec("composer require $name");
+        if (!$this->hasDependency($name)) {
+            $dev = $dev ? '--dev ' : '';
+            exec("composer require $dev$name");
+        }
     }
 }
 
