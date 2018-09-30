@@ -56,7 +56,7 @@ class Composer
             if ($dev) {
                 $options[] = '--dev';
             }
-            $options[] = $name;
+            $options['packages'] = [$name];
             $input = new ArrayInput($options);
             $input->setInteractive(false);
             $this->app->doRun($input, $this->output);
