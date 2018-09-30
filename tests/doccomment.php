@@ -3,8 +3,9 @@
 use Gentry\Gentry\Wrapper;
 
 class TraitHost extends Codger\Php\Recipe {
-    protected $template = 'class.html.twig';
     use Codger\Php\Doccomment;
+
+    protected $template = 'class.html.twig';
 }
 
 $trait = Wrapper::createObject(TraitHost::class);
