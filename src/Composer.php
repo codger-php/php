@@ -51,8 +51,7 @@ class Composer
     public function addDependency(string $name, bool $dev = false) : void
     {
         if (!$this->hasDependency($name)) {
-            $options = ['command' => 'require'];
-            $options['packages'] = [$name];
+            $options = ['command' => 'require', 'packages' => [$name]];
             if ($dev) {
                 $options['--dev'] = 'dev';
             }
