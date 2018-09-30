@@ -3,7 +3,7 @@
 namespace Codger\Php;
 
 use Composer\Console\Application;
-use Composer\Factory;
+use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Input\ArrayInput;
 
 class Composer
@@ -12,7 +12,7 @@ class Composer
     private $composer;
     /** @var Composer\Console\Application */
     private $app;
-    /** @var Symfony\Component\Console\Output\ConsoleOutput */
+    /** @var Symfony\Component\Console\Output\NullOutput */
     private $output;
 
     /**
@@ -24,8 +24,7 @@ class Composer
     {
         $path = $path ?? getcwd();
         $this->composer = json_decode(file_get_contents("$path/composer.json"));
-        $factory = new Factory;
-        $this->output = $factory->createOutput();
+        $this->output = new NullOutput;
         $this->app = new Application;
     }
 
@@ -53,10 +52,10 @@ class Composer
     {
         if (!$this->hasDependency($name)) {
             $options = ['command' => 'require'];
-            if ($dev) {
-                $options[] = '--dev';
-            }
             $options['packages'] = [$name];
+            if ($dev) {
+                $options['--dev'] = 'dev';
+            }
             $input = new ArrayInput($options);
             $input->setInteractive(false);
             $this->app->doRun($input, $this->output);
