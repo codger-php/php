@@ -63,9 +63,16 @@ class Composer
         }
     }
 
+    /**
+     * Adds a VCS repository.
+     *
+     * @param string $name
+     * @param string $url
+     * @return void
+     */
     public function addVcsRepository(string $name, string $url) : void
     {
-        $input = new ArrayInput(['command' => 'config', "repositories.$name", 'vcs', $url]);
+        $input = new ArrayInput(['command' => 'config', 'setting-key' => "repositories.$name", 'setting-value' => ['vcs', $url]]);
         $input->setInteractive(false);
         $this->app->doRun($input, $this->output);
     }
