@@ -149,7 +149,7 @@ class Klass extends Recipe
         if ($doccomment) {
             $property->setDoccomment($doccomment);
         }
-        $this->variables->properties[] = $property;
+        $this->variables->properties[$name] = $property;
         return $this;
     }
 
