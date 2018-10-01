@@ -20,6 +20,7 @@ class Klass extends Recipe
         parent::__construct();
         $this->variables->properties = [];
         $this->variables->methods = [];
+        $this->variables->constants = [];
     }
 
     /**
@@ -129,7 +130,7 @@ class Klass extends Recipe
         foreach ($constants as &$constant) {
             $constant = $this->quote($constant);
         }
-        $this->variables->constants = $constants;
+        $this->variables->constants += $constants;
         return $this;
     }
 
@@ -149,7 +150,7 @@ class Klass extends Recipe
         if ($doccomment) {
             $property->setDoccomment($doccomment);
         }
-        $this->variables->properties[] = $property;
+        $this->variables->properties[$name] = $property;
         return $this;
     }
 
