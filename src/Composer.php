@@ -8,6 +8,8 @@ use Symfony\Component\Console\Input\ArrayInput;
 
 class Composer
 {
+    /** @var string|null Path to `composer.json`, defaults to cwd. */
+    private $path;
     /** @var stdClass */
     private $composer;
     /** @var Composer\Console\Application */
@@ -24,6 +26,7 @@ class Composer
     {
         $path = $path ?? getcwd();
         $this->composer = json_decode(file_get_contents("$path/composer.json"));
+        $this->path = $path;
         $this->output = new NullOutput;
         $this->app = new Application;
     }
@@ -73,6 +76,7 @@ class Composer
         $input = new ArrayInput(['command' => 'config', 'setting-key' => "repositories.$name", 'setting-value' => ['vcs', $url]]);
         $input->setInteractive(false);
         $this->app->doRun($input, $this->output);
+        $this->__construct($this->path);
     }
 }
 
