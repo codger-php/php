@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.6.1",
+            "version": "0.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "52b95bff4ff58237aa3649d3a19ced7312fab99a"
+                "reference": "4451a5348d96d21942796c93dcec58379747598f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/52b95bff4ff58237aa3649d3a19ced7312fab99a",
-                "reference": "52b95bff4ff58237aa3649d3a19ced7312fab99a",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/4451a5348d96d21942796c93dcec58379747598f",
+                "reference": "4451a5348d96d21942796c93dcec58379747598f",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2018-10-02T11:23:00+00:00"
+            "time": "2018-10-02T11:32:19+00:00"
         },
         {
             "name": "composer/ca-bundle",
