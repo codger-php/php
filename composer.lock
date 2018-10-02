@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "185cfa5e2b512eec74a87e32afeb4055",
+    "content-hash": "4af96ee9e06c367d0eb918cfac64b69b",
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.5.5",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "08687d3468c06395da376b16691bef3c40af7d76"
+                "reference": "d7b160d6d3fa7bf22bdec8a1bf8bd10a5ed74a6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/08687d3468c06395da376b16691bef3c40af7d76",
-                "reference": "08687d3468c06395da376b16691bef3c40af7d76",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/d7b160d6d3fa7bf22bdec8a1bf8bd10a5ed74a6f",
+                "reference": "d7b160d6d3fa7bf22bdec8a1bf8bd10a5ed74a6f",
                 "shasum": ""
             },
             "require": {
@@ -35,7 +35,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Codger\\Generate\\": "./src"
+                    "Codger\\Generate\\": "./src",
+                    "Codger\\Demo\\": "./demo"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -49,7 +50,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2018-10-01T12:49:30+00:00"
+            "time": "2018-10-02T09:37:30+00:00"
         },
         {
             "name": "composer/ca-bundle",
