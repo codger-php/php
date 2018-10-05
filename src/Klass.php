@@ -31,6 +31,9 @@ class Klass extends Recipe
      */
     public function setNamespace(string $namespace) : Klass
     {
+        if (strtolower($namespace) == 'global') {
+            $namespace = null;
+        }
         $this->variables->namespace = $namespace;
         return $this;
     }
