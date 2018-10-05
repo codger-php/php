@@ -39,8 +39,8 @@ class Composer
      */
     public function hasDependency(string $name) : bool
     {
-        return (isset($this->composer->require) && array_key_exists($name, $this->composer->require))
-            || (isset($this->composer->{'require-dev'}) && array_key_exists($name, $this->composer->{'require-dev'}));
+        return (isset($this->composer->require) && isset($this->composer->require->$name))
+            || (isset($this->composer->{'require-dev'}) && isset($this->composer->{'require-dev'}->$name));
     }
 
     /**
