@@ -33,5 +33,10 @@ class Argument extends Recipe
     {
         return $this->set('variadic', $variadic);
     }
+
+    public function getName() : string
+    {
+        return $this->variables->name ?? '';
+    }
 }
 
