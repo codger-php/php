@@ -9,8 +9,14 @@ class Argument extends Recipe
 {
     use Doccomment;
 
+    /** @var string */
     protected $template = 'argument.html.twig';
 
+    /**
+     * @param Twig_Environment $twig
+     * @param ReflectionParameter $parameter Optional reflection parameter for
+     *  quick definition.
+     */
     public function __construct(Twig_Environment $twig, ReflectionParameter $parameter = null)
     {
         parent::__construct($twig);
@@ -29,14 +35,25 @@ class Argument extends Recipe
         }
     }
 
+    /**
+     * Mark the argument as variadic (or not).
+     *
+     * @param bool $variadic Defaults to `true`
+     * @return Codger\Php\Argument Itself
+     */
     public function isVariadic(bool $variadic = true) : Argument
     {
         return $this->set('variadic', $variadic);
     }
 
-    public function getName() : string
+    /**
+     * Get the name of the parameter (if set, else null).
+     *
+     * @return string|null
+     */
+    public function getName() :? string
     {
-        return $this->variables->name ?? '';
+        return $this->get('name');
     }
 }
 
