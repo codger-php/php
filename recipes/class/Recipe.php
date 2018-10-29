@@ -22,7 +22,7 @@ return function () : Klass {
         ->addMethod('foo', function (string $bar = null) : bool {}, function ($method) {
             $method->isPrivate()
                 ->setBody(<<<EOT
-            return false;
+return false;
 EOT
                 );
         })
