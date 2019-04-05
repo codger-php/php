@@ -18,7 +18,7 @@ abstract class Recipe extends Generate\Recipe
             if (count($lines) > 1) {
                 array_walk($lines, function (string &$line) use ($indent) {
                     $line = trim($line);
-                    $line = "$indent * $line";
+                    $line = trim("$indent * $line");
                 });
                 array_unshift($lines, "$indent/**");
                 $lines[] = "$indent */\n";
