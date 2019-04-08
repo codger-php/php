@@ -32,6 +32,7 @@ class Argument extends Recipe
             $this->variables->name = $parameter->name;
             $this->variables->optional = $parameter->isOptional();
             $this->variables->type = $parameter->getType();
+            $this->variables->reference = $parameter->isPassedByReference();
         }
     }
 
