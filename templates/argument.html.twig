@@ -1,1 +1,1 @@
-{% if type %}{{ type }} {% endif %}{% if variadic %}...{% endif %}{% if reference %}&{% endif %}${{ name }}{% if optional %} = null{% elseif default %} = {{ default }}{% endif %}
+{% if type %}{{ type }} {% endif %}{% if variadic %}...{% endif %}{% if reference %}{{ '&' | raw }}{% endif %}${{ name }}{% if optional %} = null{% elseif default %} = {{ default }}{% endif %}
