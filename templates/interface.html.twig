@@ -18,7 +18,7 @@ interface {{ name }}{% if extends %} extends {{ extends }}{% endif %}
     const {{ name }} = {{ value | raw }};
 {% endfor %}
 
-{% endif %}{% if methods %}
+{% if methods %}
 {% for method in methods %}
 {{ method | raw }}
 {% endfor %}
