@@ -21,7 +21,7 @@ class Method extends Funktion
      */
     public function __construct(string $name, Twig_Environment $twig = null, callable $declaration = null)
     {
-        parent::__construct($name, $twig, $declaratoin);
+        parent::__construct($name, $twig, $declaration);
         $this->variables->hasBody = true;
         $this->variables->visibility = 'public';
     }
