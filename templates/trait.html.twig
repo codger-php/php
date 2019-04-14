@@ -1,0 +1,32 @@
+<?php
+
+{% if namespace %}
+namespace {{ namespace }};
+
+{% endif %}
+{% if uses_namespaces %}
+{% for uses_namespace in uses_namespaces %}
+use {{ uses_namespace }};
+{% endfor %}
+
+{% endif %}
+{% if doccomment %}{{ doccomment | formatDoccomment(0) }}{% endif %}
+trait {{ name }}
+{{ '{' }}
+{% if uses_traits %}
+{% for trait in uses_traits %}
+    use {{ trait }};
+{% endfor %}
+
+{% endif %}
+{% if properties %}{% for property in properties %}
+{{ property | raw }}{% endfor %}
+
+{% endif %}
+{% if methods %}
+{% for method in methods %}
+{{ method | raw }}
+{% endfor %}
+{% endif %}
+}
+
