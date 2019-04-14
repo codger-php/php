@@ -8,6 +8,7 @@ namespace Codger\Php;
 class Treat extends Objectesque
 {
     use CanUseTrait;
+    use HasProperties;
 
     /** @var string */
     protected $template = 'trait.html.twig';
