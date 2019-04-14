@@ -33,9 +33,9 @@ class Lambda extends Recipe
      * Initialize this lambda from a closure's signature.
      *
      * @param callable $declaration
-     * @return Codger\Php\Method Itself
+     * @return Codger\Php\Lambda Itself
      */
-    public function initFromClosure(callable $declaration) : Method
+    public function initFromClosure(callable $declaration) : Lambda
     {
         $reflection = new ReflectionFunction($declaration);
         if ($reflection->hasReturnType()) {
@@ -53,9 +53,9 @@ class Lambda extends Recipe
      * Add an argument to the lambda.
      *
      * @param Codger\Php\Argument $argument
-     * @return Codger\Php\Method Itself
+     * @return Codger\Php\Lambda Itself
      */
-    public function addArgument(Argument $argument) : Method
+    public function addArgument(Argument $argument) : Lambda
     {
         $this->arguments[$argument->getName()] = $argument;
         return $this;
@@ -65,9 +65,9 @@ class Lambda extends Recipe
      * Set the return type of the lambda.
      *
      * @param string $type
-     * @return Codger\Php\Method Itself
+     * @return Codger\Php\Lambda Itself
      */
-    public function setReturnType(string $type) : Method
+    public function setReturnType(string $type) : Lambda
     {
         return $this->set('returntype', $type);
     }
@@ -76,25 +76,26 @@ class Lambda extends Recipe
      * Make the lambda nullable (optional return value).
      *
      * @param bool $nullable Defaults to true.
-     * @return Codger\Php\Method Itself
+     * @return Codger\Php\Lambda Itself
      */
-    public function setNullable(bool $nullable = true) : Method
+    public function setNullable(bool $nullable = true) : Lambda
     {
         return $this->set('nullable', $nullable);
     }
 
     /**
-     * Set the body of the lambda. The code is auto-indented with 4 spaces.
+     * Set the body of the lambda. The code is auto-indented.
      *
      * @param string $body
-     * @return Codger\Php\Method Itself
+     * @param int $indent Number of spaces to indent with. Defaults to 4.
+     * @return Codger\Php\Lambda Itself
      */
-    public function setBody(string $body) : Method
+    public function setBody(string $body, int $indent = 4) : Lambda
     {
         $body = trim($body);
         $lines = explode("\n", $body);
         foreach ($lines as &$line) {
-            $line = "        $line";
+            $line = str_repeat(' ', $indent).$line;
         }
         $this->variables->body = implode("\n", $lines);
         return $this;
