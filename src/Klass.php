@@ -2,65 +2,13 @@
 
 namespace Codger\Php;
 
-class Klass extends Recipe
+class Klass extends Interfaze
 {
-    use Quote;
-    use Doccomment;
+    use CanUseTrait;
+    use HasProperties;
 
     /** @var string */
     protected $template = 'class.html.twig';
-
-    /**
-     * Constructor.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->variables->properties = [];
-        $this->variables->methods = [];
-        $this->variables->constants = [];
-    }
-
-    /**
-     * Set the namespace of this class.
-     *
-     * @param string $namespace
-     * @return Codger\Php\Klass
-     */
-    public function setNamespace(string $namespace) : Klass
-    {
-        if (strtolower($namespace) == 'global') {
-            $namespace = null;
-        }
-        $this->variables->namespace = $namespace;
-        return $this;
-    }
-
-    /**
-     * Define which namespaces to `use`.
-     *
-     * @param string ...$namespaces
-     * @return Codger\Php\Klass
-     */
-    public function usesNamespaces(string ...$namespaces) : Klass
-    {
-        $this->variables->uses_namespaces = $namespaces;
-        return $this;
-    }
-
-    /**
-     * Set the name of this class.
-     *
-     * @param string $name
-     * @return Codger\Php\Klass
-     */
-    public function setName(string $name) : Klass
-    {
-        $this->variables->name = $name;
-        return $this;
-    }
 
     /**
      * Define whether to mark the class as `final`.
@@ -83,57 +31,6 @@ class Klass extends Recipe
     public function isAbstract(bool $abstract = true) : Klass
     {
         $this->variables->abstract = $abstract;
-        return $this;
-    }
-
-    /**
-     * Set the parent class. To unset, pass an empty string.
-     *
-     * @param string $class
-     * @return Codger\Php\Klass
-     */
-    public function extendsClass(string $class) : Klass
-    {
-        $this->variables->extends = $class;
-        return $this;
-    }
-
-    /**
-     * Define interfaces to implement.
-     *
-     * @param string ...$interfaces
-     * @return Codger\Php\Klass
-     */
-    public function implementsInterfaces(string ...$interfaces) : Klass
-    {
-        $this->variables->implements = implode(', ', $interfaces);
-        return $this;
-    }
-
-    /**
-     * Define which traits to `use`.
-     *
-     * @param string ...$traits
-     * @return Codger\Php\Klass
-     */
-    public function usesTraits(string ...$traits) : Klass
-    {
-        $this->variables->uses_traits = $traits;
-        return $this;
-    }
-
-    /**
-     * Define class constants. Should be passed as a hash of name/value pairs.
-     *
-     * @param array $constants
-     * @return Codger\Php\Klass
-     */
-    public function definesConstants(array $constants) : Klass
-    {
-        foreach ($constants as &$constant) {
-            $constant = $this->quote($constant);
-        }
-        $this->variables->constants += $constants;
         return $this;
     }
 
