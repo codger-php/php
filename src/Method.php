@@ -140,6 +140,7 @@ class Method extends Recipe
     public function hasBody(bool $body = true) : Method
     {
         $this->variables->hasBody = $body;
+        return $this;
     }
 
     /**
