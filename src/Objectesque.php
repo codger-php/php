@@ -81,6 +81,10 @@ abstract class Objectesque extends Recipe
         if (strlen($body)) {
             $method->setBody($body);
         }
+        // In a pure interface we don't show the body, ever.
+        if (!($this instanceof Klass || $this instanceof Treat)) {
+            $method->hasBody(false);
+        }
         $this->variables->methods[$name] = $method;
         return $this;
     }
