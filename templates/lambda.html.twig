@@ -1,5 +1,4 @@
 {% if doccomment %}{{ doccomment | formatDoccomment }}{% endif %}
-function ({{ arguments | raw }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
-{
+function ({{ arguments | raw }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %} {
 {{ body | raw }}
 };
