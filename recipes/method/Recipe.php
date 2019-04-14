@@ -10,7 +10,6 @@ return function () : Method {
     $recipe->isPrivate()
         ->isStatic()
         ->isFinal()
-        ->isAbstract()
         ->setReturnType('string')
         ->setNullable(true)
         ->setBody(<<<EOT
