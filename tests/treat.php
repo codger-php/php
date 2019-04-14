@@ -36,13 +36,6 @@ return function () use ($klass) : Generator {
         assert(strpos($result, 'use LoginScript'));
     };
     
-    /** definesConstants lets us set constants */
-    yield function () use ($klass) {
-        $klass->definesConstants(['host' => 'localhost']);
-        $result = $klass->render();
-        assert(strpos($result, "const host = 'localhost'"));
-    };
-    
     /** defineProperty lets us set properties with visibility of our choice */
     yield function () use ($klass) {
         $klass->defineProperty('user', null, 'private');
