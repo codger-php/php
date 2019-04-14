@@ -1,6 +1,7 @@
 {% if doccomment %}{{ doccomment | formatDoccomment }}{% endif %}
     {{ visibility }} {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}{% if static %}static {% endif %}function {{ name }}({{ arguments | raw }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
 {% if hasBody %}
+
     {
 {{ body | raw }}
     }
