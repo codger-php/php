@@ -136,6 +136,9 @@ class Method extends Recipe
 
     /**
      * Mark the method as having a body (or not).
+     *
+     * @param bool $body Defaults to `true`.
+     * @return Codger\Php\Method Itself
      */
     public function hasBody(bool $body = true) : Method
     {
