@@ -26,6 +26,7 @@ class Method extends Recipe
     {
         parent::__construct($twig);
         $this->variables->name = $name;
+        $this->variables->hasBody = true;
         $this->variables->visibility = 'public';
         if (isset($declaration)) {
             $this->initFromClosure($declaration);
@@ -129,7 +130,16 @@ class Method extends Recipe
     public function isAbstract(bool $abstract = true) : Method
     {
         $this->variables->abstract = $abstract;
+        $this->variables->hasBody = !$abstract;
         return $this;
+    }
+
+    /**
+     * Mark the method as having a body (or not).
+     */
+    public function hasBody(bool $body = true) : Method
+    {
+        $this->variables->hasBody = $body;
     }
 
     /**
