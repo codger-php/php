@@ -28,34 +28,6 @@ return function () use ($klass) : Generator {
         assert(strpos($result, 'trait Technology'));
     };
     
-    /** isFinal lets us define a final trait */
-    yield function () use ($klass) {
-        $klass->isFinal(true);
-        $result = $klass->render();
-        assert(strpos($result, 'final trait Technology'));
-    };
-    
-    /** isAbstract defines our trait as abstract */
-    yield function () use ($klass) {
-        $klass->isAbstract(true);
-        $result = $klass->render();
-        assert(strpos($result, 'final abstract trait Technology'));
-    };
-    
-    /** extendsClass lets our trait extend another */
-    yield function () use ($klass) {
-        $klass->extendsClass('Work');
-        $result = $klass->render();
-        assert(strpos($result, 'final abstract trait Technology extends Work'));
-    };
-    
-    /** implementsInterfaces lets us implement multiple interfaces */
-    yield function () use ($klass) {
-        $klass->implementsInterfaces('Secure', 'Fast');
-        $result = $klass->render();
-        assert(strpos($result, 'final abstract trait Technology extends Work implements Secure, Fast'));
-    };
-    
     /** usesTraits lets us define traits to use */
     yield function () use ($klass) {
         $klass->usesTraits('PasswordGenerator', 'LoginScript');
