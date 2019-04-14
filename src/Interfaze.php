@@ -27,5 +27,20 @@ class Interfaze extends Objectesque
         $this->variables->implements = implode(', ', $interfaces);
         return $this;
     }
+
+    /**
+     * Define class constants. Should be passed as a hash of name/value pairs.
+     *
+     * @param array $constants
+     * @return Codger\Php\Objectesque
+     */
+    public function definesConstants(array $constants) : Objectesque
+    {
+        foreach ($constants as &$constant) {
+            $constant = $this->quote($constant);
+        }
+        $this->variables->constants += $constants;
+        return $this;
+    }
 }
 
