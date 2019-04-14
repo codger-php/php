@@ -2,6 +2,9 @@
 
 namespace Codger\Php;
 
+/**
+ * Recipe to generate classes.
+ */
 class Klass extends Interfaze
 {
     use CanUseTrait;
@@ -32,6 +35,18 @@ class Klass extends Interfaze
     {
         $this->variables->abstract = $abstract;
         return $this;
+    }
+
+    /**
+     * Define interfaces to implement.
+     *
+     * @param string ...$interfaces
+     * @return Codger\Php\Klass
+     */
+    public function implementsInterfaces(string ...$interfaces) : Klass
+    {
+        $this->variables->implements = implode(', ', $interfaces);
+       return $this;
     }
 }
 
