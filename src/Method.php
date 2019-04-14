@@ -118,5 +118,17 @@ class Method extends Funktion
         $this->variables->hasBody = $body;
         return $this;
     }
+
+    /**
+     * Set the body of the method. The code is auto-indented.
+     *
+     * @param string $body
+     * @param int $indent Defaults to 8.
+     * @return Codger\Php\Lambda Itself
+     */
+    public function setBody(string $body, int $indent = 8) : Lambda
+    {
+        return parent::setBody($body, $indent);
+    }
 }
 
