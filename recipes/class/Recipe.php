@@ -1,7 +1,6 @@
 <?php
 
-use Codger\Php\Klass;
-use Codger\Php\Property;
+use Codger\Php\{ Klass, Method };
 
 /** Example recipe for generating a PHP class */
 return function () : Klass {
@@ -12,14 +11,14 @@ return function () : Klass {
         ->implementsInterfaces('Bla', 'Barf')
         ->defineProperty('bla', 'blaat')
         ->defineProperty('blarps', null, 'private')
-        ->addMethod('foobar', function (Codger\Php\Method $method) : void {
+        ->addMethod('foobar', function (Method $method) : void {
             $method->setBody("return true;");
         })
         ->setName('Test')
         ->isFinal()
         ->isAbstract()
         ->usesTraits('Foo\Foobar')
-        ->addMethod('foo', function (string $bar = null) : bool {}, function ($method) {
+        ->addMethod('foo', function (string $bar = null) : bool {}, function (Method $method) : void {
             $method->isPrivate()
                 ->setBody(<<<EOT
 return false;
