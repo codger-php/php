@@ -2,6 +2,8 @@
 
 namespace Codger\Php;
 
+use Twig_Environment;
+
 abstract class Objectesque extends Recipe
 {
     use Quote;
@@ -13,11 +15,12 @@ abstract class Objectesque extends Recipe
     /**
      * Constructor.
      *
+     * @param Twig_Environment $twig
      * @return void
      */
-    public function __construct()
+    public function __construct(Twig_Environment $twig)
     {
-        parent::__construct();
+        parent::__construct($twig);
         $this->variables->properties = [];
         $this->variables->methods = [];
         $this->variables->constants = [];
