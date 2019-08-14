@@ -3,7 +3,7 @@
 use Gentry\Gentry\Wrapper;
 use Codger\Php\Klass;
 
-$klass = Wrapper::createObject(Klass::class);
+$klass = Wrapper::createObject(Klass::class, new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/src')));
 
 /** Test Klass */
 return function () use ($klass) : Generator {
