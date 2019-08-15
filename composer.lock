@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4af96ee9e06c367d0eb918cfac64b69b",
+    "content-hash": "5a2f39d7c552dccb5407d01462ad5deb",
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.6.15",
+            "version": "0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "89dd3bd074cef53cf85b1470c0b96b4167825416"
+                "reference": "98ccf46c545cc2237a67067c25157af40669c50b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/89dd3bd074cef53cf85b1470c0b96b4167825416",
-                "reference": "89dd3bd074cef53cf85b1470c0b96b4167825416",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/98ccf46c545cc2237a67067c25157af40669c50b",
+                "reference": "98ccf46c545cc2237a67067c25157af40669c50b",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2019-04-13T15:18:33+00:00"
+            "time": "2019-08-15T07:01:16+00:00"
         },
         {
             "name": "composer/ca-bundle",
