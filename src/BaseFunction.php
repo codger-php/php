@@ -120,7 +120,7 @@ abstract class BaseFunction extends Recipe
             $line = str_repeat(' ', $indent).$line;
         }
         $this->set('body', implode("\n", $lines));
-        $this->set('abstract', false);
+        $this->set('hasBody', true);
         return $this;
     }
 
