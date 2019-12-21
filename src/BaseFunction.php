@@ -42,9 +42,13 @@ abstract class BaseFunction extends Recipe
         $reflection = new ReflectionFunction($declaration);
         if ($reflection->hasReturnType()) {
             $return = $reflection->getReturnType();
-            $this->_variables->returntype = $return;
-            $this->_variables->nullable = $return->allowsNull();
+            $this->set('returntype', $return);
+            $this->set('nullable', $return->allowsNull());
+        } else {
+            $this->set('returntype', null);
+            $this->set('nullable', null);
         }
+        $this->_arguments = [];
         foreach ($reflection->getParameters() as $parameter) {
             $arguments = [$parameter->name];
             if ($parameter->isOptional()) {
