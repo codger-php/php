@@ -3,6 +3,7 @@
 use Codger\Php\Interfaze;
 
 $interface = new Interfaze(['Test']);
+$interface->execute();
 
 /** Test Interfaze */
 return function () use ($interface) : Generator {
