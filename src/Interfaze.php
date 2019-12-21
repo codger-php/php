@@ -8,7 +8,7 @@ namespace Codger\Php;
 class Interfaze extends Objectesque
 {
     /** @var string */
-    public $extends = '';
+    public $extends;
 
     /** @var string */
     protected $_template = 'interface.html.twig';
