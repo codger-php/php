@@ -11,7 +11,7 @@ class Method extends Funktion
     use Doccomment;
 
     /** @var string */
-    public $visibility = 'public';
+    public $visibility;
 
     /** @var bool */
     public $static = false;
