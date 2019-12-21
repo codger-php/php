@@ -11,8 +11,9 @@ abstract class Recipe extends Generate\Recipe
 {
     public function __construct()
     {
-        parent::__construct(new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates')));
-        $this->twig->addFilter(new Twig_SimpleFilter('formatDoccomment', function (string $comment, int $indent = 4) : string {
+        parent::__construct();
+        $this->setTwigEnvironment(new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates')));
+        $this->_twig->addFilter(new Twig_SimpleFilter('formatDoccomment', function (string $comment, int $indent = 4) : string {
             $lines = explode("\n", $comment);
             $indent = str_repeat(' ', $indent);
             if (count($lines) > 1) {
