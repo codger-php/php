@@ -5,8 +5,8 @@ use Codger\Php\Composer;
 $composer = new Composer;
 
 /** Test Composer */
-return function ($test) use ($composer) : Generator {
-    $test->beforeEach(function () use (&$dir) {
+return function () use ($composer) : Generator {
+    $this->beforeEach(function () use (&$dir) {
         $dir = getcwd();
         chdir(getcwd().'/tmp');
         file_put_contents(getcwd().'/composer.json', <<<EOT
@@ -26,7 +26,7 @@ return function ($test) use ($composer) : Generator {
 EOT
         );
     });
-    $test->afterEach(function () use (&$dir) {
+    $this->afterEach(function () use (&$dir) {
         chdir($dir);
     });
     /** hasDependency can verify if we have a certain dependency */
