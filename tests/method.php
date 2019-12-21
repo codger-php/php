@@ -1,11 +1,10 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
 use Codger\Php\Method;
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates'));
 
-$method = Wrapper::createObject(Method::class, 'login', $twig);
+$method = new Method('login', $twig);
 
 /** Test Method */
 return function () use ($twig, $method) : Generator {
@@ -101,7 +100,7 @@ EOT
             }
         }
         $parameter = new ReflectionParameter([TestMethod::class, 'testMe'], 'user');
-        $argument = Wrapper::createObject(Codger\Php\Argument::class, $twig, $parameter);
+        $argument = new Codger\Php\Argument($twig, $parameter);
         $method->addArgument($argument);
         $result = $method->render();
         assert(strpos($result, 'public final static function login(string $user) :? string') !== false);
