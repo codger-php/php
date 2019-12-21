@@ -11,20 +11,19 @@ class Method extends Funktion
     use Doccomment;
 
     /** @var string */
-    protected $_template = 'method.html.twig';
+    public $visibility = 'public';
 
-    /**
-     * @param string $name Name of the method
-     * @param Twig_Environment $twig Optional Twig environment
-     * @param callable $declaration Optional argument and return type
-     *  declaration closure (function can have empty body)
-     */
-    public function __construct(string $name, Twig_Environment $twig = null, callable $declaration = null)
-    {
-        parent::__construct($name, $twig, $declaration);
-        $this->_variables->hasBody = true;
-        $this->_variables->visibility = 'public';
-    }
+    /** @var bool */
+    public $static = false;
+
+    /** @var bool */
+    public $final = false;
+
+    /** @var bool */
+    public $abstract = false;
+
+    /** @var string */
+    protected $_template = 'method.html.twig';
 
     /**
      * Set the method's visibility.
@@ -103,7 +102,6 @@ class Method extends Funktion
     public function isAbstract(bool $abstract = true) : Method
     {
         $this->_variables->abstract = $abstract;
-        $this->_variables->hasBody = !$abstract;
         return $this;
     }
 
@@ -124,9 +122,9 @@ class Method extends Funktion
      *
      * @param string $body
      * @param int $indent Defaults to 8.
-     * @return Codger\Php\Lambda Itself
+     * @return Codger\Php\BaseFunction Itself
      */
-    public function setBody(string $body, int $indent = 8) : Lambda
+    public function setBody(string $body, int $indent = 8) : BaseFunction
     {
         return parent::setBody($body, $indent);
     }
