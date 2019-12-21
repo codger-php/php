@@ -12,7 +12,7 @@ trait CanUseTrait
      */
     public function usesTraits(string ...$traits) : Objectesque
     {
-        $this->variables->uses_traits = $traits;
+        $this->_variables->uses_traits = $traits;
         return $this;
     }
 }
