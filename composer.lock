@@ -1464,16 +1464,16 @@
         },
         {
             "name": "toast/unit",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/toast-php/unit.git",
-                "reference": "8d4a85038bd42162f661f63bba173279bb6573b7"
+                "reference": "3b992a32c895fd0eafd1a10335ec9a32004e39ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/toast-php/unit/zipball/8d4a85038bd42162f661f63bba173279bb6573b7",
-                "reference": "8d4a85038bd42162f661f63bba173279bb6573b7",
+                "url": "https://api.github.com/repos/toast-php/unit/zipball/3b992a32c895fd0eafd1a10335ec9a32004e39ac",
+                "reference": "3b992a32c895fd0eafd1a10335ec9a32004e39ac",
                 "shasum": ""
             },
             "require": {
@@ -1501,7 +1501,7 @@
                 }
             ],
             "description": "Super-simple unit testing for PHP7",
-            "time": "2019-11-08T14:52:41+00:00"
+            "time": "2019-12-21T13:50:00+00:00"
         }
     ],
     "aliases": [],
