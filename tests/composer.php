@@ -1,9 +1,8 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
 use Codger\Php\Composer;
 
-$composer = Wrapper::createObject(Composer::class);
+$composer = new Composer;
 
 /** Test Composer */
 return function ($test) use ($composer) : Generator {
