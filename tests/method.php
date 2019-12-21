@@ -1,11 +1,12 @@
 <?php
 
 use Codger\Php\Method;
+use Codger\Php\Argument;
 
 $method = new Method(['login']);
 
 /** Test Method */
-return function () use ($twig, $method) : Generator {
+return function () use ($method) : Generator {
     /** setVisibility allows us to modify the visibility */
     yield function () use ($method) {
         $method->setVisibility('private');
@@ -92,13 +93,8 @@ EOT
     };    
     
     /** addArgument lets us set arguments for our method */
-    yield function () use ($twig, $method) {
-        class TestMethod extends Method {
-            public function testMe(string $user) {
-            }
-        }
-        $parameter = new ReflectionParameter([TestMethod::class, 'testMe'], 'user');
-        $argument = new Codger\Php\Argument($twig, $parameter);
+    yield function () use ($method) {
+        $argument = new Argument(['user', '--type', 'string']);
         $method->addArgument($argument);
         $result = $method->render();
         assert(strpos($result, 'public final static function login(string $user) :? string') !== false);
