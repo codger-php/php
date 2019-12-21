@@ -22,6 +22,9 @@ abstract class BaseFunction extends Recipe
     public function __construct(array $arguments = null, callable $declaration = null)
     {
         parent::__construct($arguments);
+        if ($this instanceof Method) {
+            $this->set('visibility', 'public');
+        }
         $this->persistOptionsToTwig();
         if (isset($declaration)) {
             $this->initFromClosure($declaration);
