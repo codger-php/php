@@ -3,6 +3,7 @@
 use Codger\Php\Treat;
 
 $trait = new Treat(['Test']);
+$trait->execute();
 
 /** Test Treat */
 return function () use ($trait) : Generator {
