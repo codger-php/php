@@ -17,14 +17,16 @@ trait HasProperties
      */
     public function defineProperty(string $name, string $value = null, string $visibility = 'public', string $doccomment = null) : Objectesque
     {
-        $arguments = [$name, "--visibility=$visibility"];
+        $arguments = [$name, "--visibility", $visibility];
         if (!is_null($value)) {
-            $arguments[] = "--value='$value'";
+            $arguments[] = "--value=";
+            $arguments[] = $value;
         }
         $property = new Property($arguments);
         if ($doccomment) {
             $property->setDoccomment($doccomment);
         }
+        $property->execute();
         $this->_variables->properties[$name] = $property;
         return $this;
     }
