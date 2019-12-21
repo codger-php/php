@@ -9,18 +9,17 @@ trait HasProperties
      * means 'no initial value.
      *
      * @param string $name Name of the property. Omit the dollar sign.
-     * @param string|null $value Optional initial value.
+     * @param string|null $default Optional initial value.
      * @param string $visibility `public`, `protected` or `private`. Defaults to
      *  `public`.
      * @param string|null $doccomment Optional doccomment.
      * @return Codger\Php\Objectesque
      */
-    public function defineProperty(string $name, string $value = null, string $visibility = 'public', string $doccomment = null) : Objectesque
+    public function defineProperty(string $name, string $default = null, string $visibility = 'public', string $doccomment = null) : Objectesque
     {
-        $arguments = [$name, "--visibility", $visibility];
-        if (!is_null($value)) {
-            $arguments[] = "--value=";
-            $arguments[] = $value;
+        $arguments = [$name, "--visibility=$visibility"];
+        if (!is_null($default)) {
+            $arguments[] = "--default=$default";
         }
         $property = new Property($arguments);
         if ($doccomment) {
