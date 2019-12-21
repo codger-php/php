@@ -79,7 +79,6 @@ return function () use ($method) : Generator {
     
     /** setBody lets us define the body of our method */
     yield function () use ($method) {
-        $method->isAbstract(false);
         $method->setBody(<<<EOT
 if ((1 +1) === 2) {
     return 'Hier komt ie sws ja';
