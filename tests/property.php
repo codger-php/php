@@ -1,11 +1,8 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
 use Codger\Php\Property;
 
-$twig = new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates'));
-
-$property = Wrapper::createObject(Property::class, $twig, 'user', 'danny', 'private');
+$property = new Property(['user', '--default', 'danny', '--visibility', 'private']);
 
 /** Tests for properties */
 return function () use ($property) : Generator {
