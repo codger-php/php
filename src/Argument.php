@@ -11,9 +11,6 @@ class Argument extends Recipe
     /** @var bool */
     public $variadic = false;
 
-    /** @var string */
-    public $name = '';
-
     /** @var bool */
     public $optional = false;
 
@@ -28,25 +25,18 @@ class Argument extends Recipe
 
     /**
      * @param array|null $arguments
-     * @param ReflectionParameter $parameter Optional reflection parameter for
      *  quick definition.
      */
-    public function __construct(array $arguments = null, ReflectionParameter $parameter = null)
+    public function __construct(array $arguments = null)
     {
         parent::__construct($arguments);
         $this->persistOptionsToTwig();
-        if (isset($parameter)) {
-            $this->isVariadic($parameter->isVariadic())
-                ->set('name', $parameter->name)
-                ->set('optional', $parameter->isOptional())
-                ->set('type', $parameter->getType())
-                ->set('reference', $parameter->isPassedByReference());
-        }
     }
 
-    public function __invoke() : void
+    public function __invoke(string $name) : void
     {
-        $this->output($this->get('name').'.php');
+        $this->set('name', $name);
+        $this->output("$name.php");
     }
 
     /**
