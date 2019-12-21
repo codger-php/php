@@ -11,22 +11,27 @@ class Property extends Recipe
     use Quote;
 
     /** @var string */
+    public $default = null;
+
+    /** @var string */
+    public $visibility = 'public';
+
+    /** @var string */
     protected $_template = 'property.html.twig';
 
     /**
-     * @param Twig_Environment $twig
-     * @param string $name
-     * @param string $default Optional default
-     * @param string $visibility Optional visibility, defaults to `public`
+     * @param array|null $arguments
      */
-    public function __construct(Twig_Environment $twig, string $name, string $default = null, string $visibility = 'public')
+    public function __construct(array $arguments = null)
     {
-        parent::__construct($twig);
-        $this->_variables = (object)[
-            'default' => $this->quote($default),
-            'name' => $name,
-            'visibility' => $visibility,
-        ];
+        parent::__construct($arguments);
+        $this->persistOptionsToTwig('default');
+    }
+
+    public function __invoke(string $name)
+    {
+        $this->set('name', $name);
+        $this->output("$name.php");
     }
 }
 
