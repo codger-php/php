@@ -2,38 +2,51 @@
 
 namespace Codger\Php;
 
-use Twig_Environment;
 use ReflectionParameter;
 
 class Argument extends Recipe
 {
     use Doccomment;
 
+    /** @var bool */
+    public $variadic = false;
+
+    /** @var string */
+    public $name = '';
+
+    /** @var bool */
+    public $optional = false;
+
+    /** @var string */
+    public $type = '';
+
+    /** @var bool */
+    public $reference = false;
+
     /** @var string */
     protected $_template = 'argument.html.twig';
 
     /**
-     * @param Twig_Environment $twig
+     * @param array|null $arguments
      * @param ReflectionParameter $parameter Optional reflection parameter for
      *  quick definition.
      */
-    public function __construct(Twig_Environment $twig, ReflectionParameter $parameter = null)
+    public function __construct(array $arguments = null, ReflectionParameter $parameter = null)
     {
-        parent::__construct($twig);
-        $this->_variables = (object)[
-            'type' => false,
-            'variadic' => false,
-            'default' => false,
-            'name' => false,
-            'optional' => false,
-        ];
+        parent::__construct($arguments);
+        $this->persistOptionsToTwig();
         if (isset($parameter)) {
-            $this->isVariadic($parameter->isVariadic());
-            $this->_variables->name = $parameter->name;
-            $this->_variables->optional = $parameter->isOptional();
-            $this->_variables->type = $parameter->getType();
-            $this->_variables->reference = $parameter->isPassedByReference();
+            $this->isVariadic($parameter->isVariadic())
+                ->set('name', $parameter->name)
+                ->set('optional', $parameter->isOptional())
+                ->set('type', $parameter->getType())
+                ->set('reference', $parameter->isPassedByReference());
         }
+    }
+
+    public function __invoke() : void
+    {
+        $this->output($this->get('name').'.php');
     }
 
     /**
