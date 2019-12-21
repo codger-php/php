@@ -11,7 +11,7 @@ class Funktion extends Lambda
     use Doccomment;
 
     /** @var string */
-    protected $template = 'function.html.twig';
+    protected $_template = 'function.html.twig';
 
     /**
      * @param string $name Name of the function
@@ -22,7 +22,7 @@ class Funktion extends Lambda
     public function __construct(string $name, Twig_Environment $twig = null, callable $declaration = null)
     {
         parent::__construct($twig, $declaration);
-        $this->variables->name = $name;
+        $this->_variables->name = $name;
     }
 }
 
