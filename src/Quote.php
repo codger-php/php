@@ -13,7 +13,7 @@ trait Quote
     protected function quote(string $unquoted = null) : string
     {
         if (is_null($unquoted)) {
-            return 'NULL';
+            return 'null';
         }
         if (is_numeric($unquoted)) {
             return (string)$unquoted;
