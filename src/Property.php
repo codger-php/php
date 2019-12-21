@@ -11,7 +11,7 @@ class Property extends Recipe
     use Quote;
 
     /** @var string */
-    public $default = null;
+    public $default;
 
     /** @var string */
     public $visibility = 'public';
