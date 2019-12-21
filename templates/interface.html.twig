@@ -4,9 +4,9 @@
 namespace {{ namespace }};
 
 {% endif %}
-{% if uses_namespaces %}
-{% for uses_namespace in uses_namespaces %}
-use {{ uses_namespace }};
+{% if usesNamespace %}
+{% for namespace in usesNamespace %}
+use {{ namespace }};
 {% endfor %}
 
 {% endif %}
