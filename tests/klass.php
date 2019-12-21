@@ -3,7 +3,7 @@
 use Codger\Php\Klass;
 use Codger\Php\Method;
 
-$klass = new Klass([]);
+$klass = new Klass(['Test']);
 
 /** Test Klass */
 return function () use ($klass) : Generator {
