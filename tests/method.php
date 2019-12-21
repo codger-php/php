@@ -98,14 +98,14 @@ EOT
         $argument->execute();
         $method->addArgument($argument);
         $result = $method->render();
-        assert(strpos($result, 'public final static function login(string $user) :? string') !== false);
+        assert(strpos($result, 'public final abstract static function login(string $user) :? string') !== false);
     };
     
     /** initFromClosure can retrieve information from a callable */
     yield function () use ($method) {
         $callable = function (string $user, string $pass = null) {};
         $result = $method->initFromClosure($callable)->render();
-        assert(strpos($result, 'public final static function login(string $user, string $pass = null)') !== false);
+        assert(strpos($result, 'public final abstract static function login(string $user, string $pass = null)') !== false);
     };
 };
 
