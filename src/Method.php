@@ -11,7 +11,7 @@ class Method extends Funktion
     use Doccomment;
 
     /** @var string */
-    protected $template = 'method.html.twig';
+    protected $_template = 'method.html.twig';
 
     /**
      * @param string $name Name of the method
@@ -22,8 +22,8 @@ class Method extends Funktion
     public function __construct(string $name, Twig_Environment $twig = null, callable $declaration = null)
     {
         parent::__construct($name, $twig, $declaration);
-        $this->variables->hasBody = true;
-        $this->variables->visibility = 'public';
+        $this->_variables->hasBody = true;
+        $this->_variables->visibility = 'public';
     }
 
     /**
@@ -37,7 +37,7 @@ class Method extends Funktion
         if (!in_array($visibility, ['public', 'protected', 'private'])) {
             throw new DomainException("Visibility must be one of public, protected or private, not $visibility.");
         }
-        $this->variables->visibility = $visibility;
+        $this->_variables->visibility = $visibility;
         return $this;
     }
 
@@ -90,7 +90,7 @@ class Method extends Funktion
      */
     public function isFinal(bool $final = true) : Method
     {
-        $this->variables->final = $final;
+        $this->_variables->final = $final;
         return $this;
     }
 
@@ -102,8 +102,8 @@ class Method extends Funktion
      */
     public function isAbstract(bool $abstract = true) : Method
     {
-        $this->variables->abstract = $abstract;
-        $this->variables->hasBody = !$abstract;
+        $this->_variables->abstract = $abstract;
+        $this->_variables->hasBody = !$abstract;
         return $this;
     }
 
@@ -115,7 +115,7 @@ class Method extends Funktion
      */
     public function hasBody(bool $body = true) : Method
     {
-        $this->variables->hasBody = $body;
+        $this->_variables->hasBody = $body;
         return $this;
     }
 
