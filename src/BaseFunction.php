@@ -115,7 +115,8 @@ abstract class BaseFunction extends Recipe
         foreach ($lines as &$line) {
             $line = str_repeat(' ', $indent).$line;
         }
-        $this->_variables->body = implode("\n", $lines);
+        $this->set('body', implode("\n", $lines));
+        $this->set('abstract', false);
         return $this;
     }
 
