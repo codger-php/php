@@ -11,7 +11,7 @@ class Klass extends Interfaze
     use HasProperties;
 
     /** @var string */
-    protected $template = 'class.html.twig';
+    protected $_template = 'class.html.twig';
 
     /**
      * Define whether to mark the class as `final`.
@@ -21,7 +21,7 @@ class Klass extends Interfaze
      */
     public function isFinal(bool $final = true) : Klass
     {
-        $this->variables->final = $final;
+        $this->_variables->final = $final;
         return $this;
     }
 
@@ -33,7 +33,7 @@ class Klass extends Interfaze
      */
     public function isAbstract(bool $abstract = true) : Klass
     {
-        $this->variables->abstract = $abstract;
+        $this->_variables->abstract = $abstract;
         return $this;
     }
 
@@ -45,7 +45,7 @@ class Klass extends Interfaze
      */
     public function implementsInterfaces(string ...$interfaces) : Klass
     {
-        $this->variables->implements = implode(', ', $interfaces);
+        $this->_variables->implements = implode(', ', $interfaces);
        return $this;
     }
 }
