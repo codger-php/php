@@ -1,9 +1,8 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
 use Codger\Php\Treat;
 
-$trait = Wrapper::createObject(Treat::class, new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/src')));
+$trait = new Treat(new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/src')));
 
 /** Test Treat */
 return function () use ($trait) : Generator {
