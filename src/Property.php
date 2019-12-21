@@ -14,7 +14,7 @@ class Property extends Recipe
     public $default;
 
     /** @var string */
-    public $visibility = 'public';
+    public $visibility;
 
     /** @var string */
     protected $_template = 'property.html.twig';
@@ -25,6 +25,7 @@ class Property extends Recipe
     public function __construct(array $arguments = null)
     {
         parent::__construct($arguments);
+        $this->set('visibility', 'public');
         $this->persistOptionsToTwig('default');
     }
 
