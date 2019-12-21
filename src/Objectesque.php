@@ -10,20 +10,20 @@ abstract class Objectesque extends Recipe
     use Doccomment;
 
     /** @var string */
-    protected $template;
+    protected $_template;
 
     /**
      * Constructor.
      *
-     * @param Twig_Environment $twig
+     * @param array|null $arguments
      * @return void
      */
-    public function __construct(Twig_Environment $twig)
+    public function __construct(array $arguments = null)
     {
-        parent::__construct($twig);
-        $this->variables->properties = [];
-        $this->variables->methods = [];
-        $this->variables->constants = [];
+        parent::__construct($arguments);
+        $this->_variables->properties = [];
+        $this->_variables->methods = [];
+        $this->_variables->constants = [];
     }
 
     /**
@@ -37,7 +37,7 @@ abstract class Objectesque extends Recipe
         if (strtolower($namespace) == 'global') {
             $namespace = null;
         }
-        $this->variables->namespace = $namespace;
+        $this->_variables->namespace = $namespace;
         return $this;
     }
 
@@ -49,7 +49,7 @@ abstract class Objectesque extends Recipe
      */
     public function usesNamespaces(string ...$namespaces) : Objectesque
     {
-        $this->variables->uses_namespaces = $namespaces;
+        $this->_variables->uses_namespaces = $namespaces;
         return $this;
     }
 
@@ -61,7 +61,7 @@ abstract class Objectesque extends Recipe
      */
     public function setName(string $name) : Objectesque
     {
-        $this->variables->name = $name;
+        $this->_variables->name = $name;
         return $this;
     }
 
@@ -88,7 +88,7 @@ abstract class Objectesque extends Recipe
         if (!($this instanceof Klass || $this instanceof Treat)) {
             $method->hasBody(false);
         }
-        $this->variables->methods[$name] = $method;
+        $this->_variables->methods[$name] = $method;
         return $this;
     }
 
@@ -100,7 +100,7 @@ abstract class Objectesque extends Recipe
      */
     public function getMethod(string $name) :? Method
     {
-        return $this->variables->methods[$name] ?? null;
+        return $this->_variables->methods[$name] ?? null;
     }
 
     /**
@@ -110,10 +110,10 @@ abstract class Objectesque extends Recipe
      */
     public function render() : string
     {
-        array_walk($this->variables->methods, function (&$method) {
+        array_walk($this->_variables->methods, function (&$method) {
             $method = $method->render();
         });
-        array_walk($this->variables->properties, function (&$property) {
+        array_walk($this->_variables->properties, function (&$property) {
             $property = $property->render();
         });
         return preg_replace("@\n}\n$@m", "}\n", parent::render());
