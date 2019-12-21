@@ -1,9 +1,8 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
 use Codger\Php\Interfaze;
 
-$interface = Wrapper::createObject(Interfaze::class, new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/src')));
+$interface = new Interfaze;
 
 /** Test Interfaze */
 return function () use ($interface) : Generator {
