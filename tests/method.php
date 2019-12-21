@@ -4,6 +4,7 @@ use Codger\Php\Method;
 use Codger\Php\Argument;
 
 $method = new Method(['login']);
+$method->execute();
 
 /** Test Method */
 return function () use ($method) : Generator {
