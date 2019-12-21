@@ -3,6 +3,7 @@
 use Codger\Php\Property;
 
 $property = new Property(['user', '--default', 'danny', '--visibility', 'private']);
+$property->execute();
 
 /** Tests for properties */
 return function () use ($property) : Generator {
