@@ -11,7 +11,7 @@ class Lambda extends Recipe
     use Doccomment;
 
     /** @var string */
-    protected $template = 'lambda.html.twig';
+    protected $_template = 'lambda.html.twig';
 
     /** @var array */
     protected $arguments = [];
@@ -40,8 +40,8 @@ class Lambda extends Recipe
         $reflection = new ReflectionFunction($declaration);
         if ($reflection->hasReturnType()) {
             $return = $reflection->getReturnType();
-            $this->variables->returntype = $return;
-            $this->variables->nullable = $return->allowsNull();
+            $this->_variables->returntype = $return;
+            $this->_variables->nullable = $return->allowsNull();
         }
         foreach ($reflection->getParameters() as $parameter) {
             $this->addArgument(new Argument($this->twig, $parameter));
@@ -97,7 +97,7 @@ class Lambda extends Recipe
         foreach ($lines as &$line) {
             $line = str_repeat(' ', $indent).$line;
         }
-        $this->variables->body = implode("\n", $lines);
+        $this->_variables->body = implode("\n", $lines);
         return $this;
     }
 
@@ -112,7 +112,7 @@ class Lambda extends Recipe
         foreach ($this->arguments as $argument) {
             $arguments[] = $argument->render();
         }
-        $this->variables->arguments = implode(', ', $arguments);
+        $this->_variables->arguments = implode(', ', $arguments);
         return parent::render();
     }
 }
