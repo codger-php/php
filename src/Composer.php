@@ -6,6 +6,9 @@ use Composer\Console\Application;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Input\ArrayInput;
 
+/**
+ * Simple wrapper so recipies can interact with Composer.
+ */
 class Composer
 {
     /** @var string|null Path to `composer.json`, defaults to cwd. */
