@@ -2,18 +2,16 @@
 
 namespace Codger\Php;
 
-use Twig_Environment;
-use Twig_Loader_Filesystem;
-use Twig_SimpleFilter;
+use Twig\{ Environment, Loader\FilesystemLoader, TwigFilter };
 use Codger\Generate;
 
 abstract class Recipe extends Generate\Recipe
 {
-    public function __construct()
+    public function __construct(array $arguments = null)
     {
-        parent::__construct();
-        $this->setTwigEnvironment(new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates')));
-        $this->_twig->addFilter(new Twig_SimpleFilter('formatDoccomment', function (string $comment, int $indent = 4) : string {
+        parent::__construct($arguments);
+        $twig = new Environment(new FilesystemLoader(dirname(__DIR__).'/templates'));
+        $twig->addFilter(new TwigFilter('formatDoccomment', function (string $comment, int $indent = 4) : string {
             $lines = explode("\n", $comment);
             $indent = str_repeat(' ', $indent);
             if (count($lines) > 1) {
@@ -28,6 +26,7 @@ abstract class Recipe extends Generate\Recipe
             }
             return implode("\n", $lines);
         }));
+        $this->setTwigEnvironment($twig);
     }
 }
 
