@@ -95,6 +95,7 @@ EOT
     /** addArgument lets us set arguments for our method */
     yield function () use ($method) {
         $argument = new Argument(['user', '--type', 'string']);
+        $argument->execute();
         $method->addArgument($argument);
         $result = $method->render();
         assert(strpos($result, 'public final static function login(string $user) :? string') !== false);
@@ -104,7 +105,7 @@ EOT
     yield function () use ($method) {
         $callable = function (string $user, string $pass = null) {};
         $result = $method->initFromClosure($callable)->render();
-        assert(strpos($result, 'public final static function login(string $user, string $pass = null) :? string') !== false);
+        assert(strpos($result, 'public final static function login(string $user, string $pass = null)') !== false);
     };
 };
 
