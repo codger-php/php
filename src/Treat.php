@@ -11,6 +11,6 @@ class Treat extends Objectesque
     use HasProperties;
 
     /** @var string */
-    protected $template = 'trait.html.twig';
+    protected $_template = 'trait.html.twig';
 }
 
