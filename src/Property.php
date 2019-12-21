@@ -26,11 +26,7 @@ class Property extends Recipe
     {
         parent::__construct($arguments);
         $this->set('visibility', 'public');
-        if (isset($this->default)) {
-            $this->persistOptionsToTwig('default');
-        } else {
-            $this->persistOptionsToTwig();
-        }
+        $this->persistOptionsToTwig('default');
     }
 
     public function __invoke(string $name)
