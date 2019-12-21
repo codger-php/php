@@ -7,6 +7,11 @@ abstract class Objectesque extends Recipe
     use Quote;
     use Doccomment;
 
+    /** @var array */
+    public $namespace = [];
+    /** @var array */
+    public $usesNamespace = [];
+
     /** @var string */
     protected $_template;
 
@@ -22,6 +27,7 @@ abstract class Objectesque extends Recipe
         $this->_variables->properties = [];
         $this->_variables->methods = [];
         $this->_variables->constants = [];
+        $this->persistOptionsToTwig();
     }
 
     /**
@@ -47,7 +53,7 @@ abstract class Objectesque extends Recipe
      */
     public function usesNamespaces(string ...$namespaces) : Objectesque
     {
-        $this->_variables->uses_namespaces = $namespaces;
+        $this->_variables->usesNamespace = $namespaces;
         return $this;
     }
 
@@ -116,6 +122,11 @@ abstract class Objectesque extends Recipe
             $property = $property->render();
         });
         return preg_replace("@\n}\n$@m", "}\n", parent::render());
+    }
+
+    public function __invoke(string $name) : void
+    {
+        $this->output("$name.php");
     }
 }
 
