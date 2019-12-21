@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.8.1",
+            "version": "0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "91b3565b965fca9165061694b885b37d1a91824f"
+                "reference": "cbd4e0f81536a6f2462131490d47f3a7f445ecaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/91b3565b965fca9165061694b885b37d1a91824f",
-                "reference": "91b3565b965fca9165061694b885b37d1a91824f",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/cbd4e0f81536a6f2462131490d47f3a7f445ecaf",
+                "reference": "cbd4e0f81536a6f2462131490d47f3a7f445ecaf",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2019-12-21T07:23:18+00:00"
+            "time": "2019-12-21T08:25:21+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -421,16 +421,16 @@
         },
         {
             "name": "monolyth/cliff",
-            "version": "0.5.3",
+            "version": "0.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monolyth-php/cliff.git",
-                "reference": "d5d93e5734b10caab151fac1bf5d06fda039035a"
+                "reference": "22fd051995911186117454976db8ef9dd06d80bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monolyth-php/cliff/zipball/d5d93e5734b10caab151fac1bf5d06fda039035a",
-                "reference": "d5d93e5734b10caab151fac1bf5d06fda039035a",
+                "url": "https://api.github.com/repos/monolyth-php/cliff/zipball/22fd051995911186117454976db8ef9dd06d80bb",
+                "reference": "22fd051995911186117454976db8ef9dd06d80bb",
                 "shasum": ""
             },
             "require": {
@@ -463,7 +463,7 @@
                 }
             ],
             "description": "Command line interface for Monolyth unframework",
-            "time": "2019-12-21T06:53:36+00:00"
+            "time": "2019-12-21T07:37:35+00:00"
         },
         {
             "name": "monomelodies/reflex",
