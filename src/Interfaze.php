@@ -8,7 +8,7 @@ namespace Codger\Php;
 class Interfaze extends Objectesque
 {
     /** @var string */
-    protected $template = 'interface.html.twig';
+    protected $_template = 'interface.html.twig';
     /**
      * Set the parent class. To unset, pass an empty string.
      *
@@ -17,7 +17,7 @@ class Interfaze extends Objectesque
      */
     public function extendsClass(string $class) : Objectesque
     {
-        $this->variables->extends = $class;
+        $this->_variables->extends = $class;
         return $this;
     }
 
@@ -32,7 +32,7 @@ class Interfaze extends Objectesque
         foreach ($constants as &$constant) {
             $constant = $this->quote($constant);
         }
-        $this->variables->constants += $constants;
+        $this->_variables->constants += $constants;
         return $this;
     }
 }
