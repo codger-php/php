@@ -18,6 +18,9 @@ trait Quote
         if (is_numeric($unquoted)) {
             return (string)$unquoted;
         }
+        if (in_array($unquoted, ['true', 'false'])) {
+            return $unquoted;
+        }
         return "'".str_replace("'", "\'", $unquoted)."'";
     }
 }
