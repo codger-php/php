@@ -1,14 +1,10 @@
 <?php
 
-use Gentry\Gentry\Wrapper;
-
-class TraitHost extends Codger\Php\Recipe {
+$trait = new class(['Test']) extends Codger\Php\Recipe {
     use Codger\Php\Doccomment;
 
-    protected $template = 'class.html.twig';
-}
-
-$trait = Wrapper::createObject(TraitHost::class);
+    protected $_template = 'class.html.twig';
+};
 
 /** Doccomment test */
 return function () use ($trait) : Generator {
