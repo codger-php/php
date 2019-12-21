@@ -89,7 +89,7 @@ class Method extends Funktion
      */
     public function isFinal(bool $final = true) : Method
     {
-        $this->_variables->final = $final;
+        $this->set('final', $final);
         return $this;
     }
 
@@ -101,7 +101,7 @@ class Method extends Funktion
      */
     public function isAbstract(bool $abstract = true) : Method
     {
-        $this->_variables->abstract = $abstract;
+        $this->set('abstract', $abstract);
         return $this;
     }
 
@@ -113,7 +113,7 @@ class Method extends Funktion
      */
     public function hasBody(bool $body = true) : Method
     {
-        $this->_variables->hasBody = $body;
+        $this->set('hasBody', $body);
         return $this;
     }
 
