@@ -2,9 +2,7 @@
 
 use Codger\Php\Method;
 
-$twig = new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/templates'));
-
-$method = new Method('login', $twig);
+$method = new Method(['login']);
 
 /** Test Method */
 return function () use ($twig, $method) : Generator {
