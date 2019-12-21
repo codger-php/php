@@ -2,7 +2,7 @@
 
 use Codger\Php\Treat;
 
-$trait = new Treat(new Twig_Environment(new Twig_Loader_Filesystem(dirname(__DIR__).'/src')));
+$trait = new Treat(['Test']);
 
 /** Test Treat */
 return function () use ($trait) : Generator {
