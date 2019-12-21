@@ -1,8 +1,9 @@
 <?php
 
 use Codger\Php\Klass;
+use Codger\Php\Method;
 
-$klass = new Klass;
+$klass = new Klass([]);
 
 /** Test Klass */
 return function () use ($klass) : Generator {
@@ -79,7 +80,7 @@ return function () use ($klass) : Generator {
     
     /** addMethod lets us create a method and allows us to retrieve it */
     yield function () use ($klass) {
-        $klass->addMethod('login', function (string $user, string $pass) : bool {}, function ($method) {
+        $klass->addMethod('login', function (string $user, string $pass) : bool {}, function (Method $method) : void {
             $method->setBody(<<<EOT
         if (\$user === 'test' && \$pass === 'blarps') {
     return true;
