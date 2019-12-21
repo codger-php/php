@@ -11,7 +11,7 @@ class Property extends Recipe
     use Quote;
 
     /** @var string */
-    protected $template = 'property.html.twig';
+    protected $_template = 'property.html.twig';
 
     /**
      * @param Twig_Environment $twig
@@ -22,7 +22,7 @@ class Property extends Recipe
     public function __construct(Twig_Environment $twig, string $name, string $default = null, string $visibility = 'public')
     {
         parent::__construct($twig);
-        $this->variables = (object)[
+        $this->_variables = (object)[
             'default' => $this->quote($default),
             'name' => $name,
             'visibility' => $visibility,
