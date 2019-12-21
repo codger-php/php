@@ -7,6 +7,7 @@ use ReflectionParameter;
 class Argument extends Recipe
 {
     use Doccomment;
+    use Quote;
 
     /** @var bool */
     public $variadic = false;
@@ -16,6 +17,9 @@ class Argument extends Recipe
 
     /** @var string */
     public $type;
+
+    /** @var string */
+    public $default;
 
     /** @var bool */
     public $reference = false;
@@ -30,7 +34,7 @@ class Argument extends Recipe
     public function __construct(array $arguments = null)
     {
         parent::__construct($arguments);
-        $this->persistOptionsToTwig();
+        $this->persistOptionsToTwig('default');
     }
 
     public function __invoke(string $name) : void
