@@ -34,7 +34,14 @@ class Argument extends Recipe
     public function __construct(array $arguments = null)
     {
         parent::__construct($arguments);
-        $this->persistOptionsToTwig('default');
+        // If the argument is optional (hence might accept null) OR a default
+        // value was set (not null), we must quote it for rendering in PHP.
+        // Otherwise, we can leave it as is.
+        if ($this->optional || isset($this->default)) {
+            $this->persistOptionsToTwig('default');
+        } else {
+            $this->persistOptionsToTwig();
+        }
     }
 
     public function __invoke(string $name) : void
