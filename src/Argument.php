@@ -10,7 +10,7 @@ class Argument extends Recipe
     use Doccomment;
 
     /** @var string */
-    protected $template = 'argument.html.twig';
+    protected $_template = 'argument.html.twig';
 
     /**
      * @param Twig_Environment $twig
@@ -20,7 +20,7 @@ class Argument extends Recipe
     public function __construct(Twig_Environment $twig, ReflectionParameter $parameter = null)
     {
         parent::__construct($twig);
-        $this->variables = (object)[
+        $this->_variables = (object)[
             'type' => false,
             'variadic' => false,
             'default' => false,
@@ -29,10 +29,10 @@ class Argument extends Recipe
         ];
         if (isset($parameter)) {
             $this->isVariadic($parameter->isVariadic());
-            $this->variables->name = $parameter->name;
-            $this->variables->optional = $parameter->isOptional();
-            $this->variables->type = $parameter->getType();
-            $this->variables->reference = $parameter->isPassedByReference();
+            $this->_variables->name = $parameter->name;
+            $this->_variables->optional = $parameter->isOptional();
+            $this->_variables->type = $parameter->getType();
+            $this->_variables->reference = $parameter->isPassedByReference();
         }
     }
 
