@@ -15,7 +15,7 @@ class Argument extends Recipe
     public $optional = false;
 
     /** @var string */
-    public $type = '';
+    public $type;
 
     /** @var bool */
     public $reference = false;
