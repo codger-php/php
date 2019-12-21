@@ -28,5 +28,15 @@ abstract class Recipe extends Generate\Recipe
         }));
         $this->setTwigEnvironment($twig);
     }
+
+    protected function persistOptionsToTwig(string ...$quote) : void
+    {
+        parent::persistOptionsToTwig();
+        foreach ($this->_variables as $key => $value) {
+            if (in_array($key, $quote)) {
+                $this->set($key, $this->quote($value));
+            }
+        }
+    }
 }
 
