@@ -14,8 +14,8 @@ use {{ namespace }};
 interface {{ name }}{% if extends %} extends {{ extends }}{% endif %}
 
 {{ '{' }}
-{% for name, value in constants %}
-    const {{ name }} = {{ value | raw }};
+{% for constant in constants %}
+{{ constant | raw }}
 {% endfor %}
 
 {% if methods %}
