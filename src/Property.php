@@ -41,7 +41,7 @@ class Property extends Recipe
      */
     public function setVisibility(string $visibility) : Property
     {
-        if (!in_array($visibility(['public', 'protected', 'private']))) {
+        if (!in_array($visibility, ['public', 'protected', 'private'])) {
             throw new DomainException("Visibility must be public, protected or private.");
         }
         return $this->set('visibility', $visibility);
