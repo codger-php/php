@@ -21,13 +21,13 @@ use {{ namespace }};
 
 {% endif %}
 {% if constants %}
-{% for name, value in constants %}
-    const {{ name }} = {{ value | raw }};
+{% for constant in constants %}
+{{ constant | raw }}
 {% endfor %}
 
 {% endif %}{% if properties %}{% for property in properties %}
-{{ property | raw }}{% endfor %}
-
+{{ property | raw }}
+{% endfor %}
 {% endif %}
 {% if methods %}
 {% for method in methods %}
