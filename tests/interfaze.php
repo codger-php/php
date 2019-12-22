@@ -37,11 +37,23 @@ return function () use ($interface) : Generator {
     
     /** definesConstants lets us set constants */
     yield function () use ($interface) {
-        $interface->definesConstants(['host' => 'localhost']);
+        $interface->definesConstant('host', 'localhost');
         $result = $interface->render();
         assert(strpos($result, "const host = 'localhost'") !== false);
     };
     
+    /** A constant can be further processed using the callback */
+    yield function () use ($interface) {
+        $interface->definesConstant('host', 'localhost', function (Codger\Php\Konstant $constant) : void {
+            $constant->setDocComment(<<<EOT
+@var string
+EOT
+            );
+        });
+        $result = $interface->render();
+        assert(strpos($result, "/** @var string */\n    const host = 'localhost'") !== false);
+    };
+
     /** addMethod lets us create a method and allows us to retrieve it */
     yield function () use ($interface) {
         $interface->addMethod('login', function (string $user, string $pass) : bool {}, function () {});
