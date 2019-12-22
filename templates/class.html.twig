@@ -14,8 +14,8 @@ use {{ namespace }};
 {% if final %}final {% endif %}{% if abstract %}abstract {% endif %}class {{ name }}{% if extends %} extends {{ extends }}{% endif %}{% if implements %} implements {{ implements }}{% endif %}
 
 {{ '{' }}
-{% if uses_traits %}
-{% for trait in uses_traits %}
+{% if usesTrait %}
+{% for trait in usesTrait %}
     use {{ trait }};
 {% endfor %}
 
