@@ -38,6 +38,11 @@ abstract class Recipe extends Generate\Recipe
         $this->setTwigEnvironment($twig);
     }
 
+    /**
+     * Render the template, with stray whitespace cleaned up.
+     *
+     * @return string
+     */
     public function render() : string
     {
         $result = parent::render();
