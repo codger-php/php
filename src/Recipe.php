@@ -41,7 +41,7 @@ abstract class Recipe extends Generate\Recipe
     public function render() : string
     {
         $result = parent::render();
-        return preg_replace("@\n(\s*)}@m", "\\1}", $result);
+        return preg_replace(["@\n\n(\s*)}@m", "@(\s*){\n\n"], ["\n\\1}", "\\1{\n"], $result);
     }
 }
 
