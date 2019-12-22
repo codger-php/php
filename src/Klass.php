@@ -10,6 +10,13 @@ class Klass extends Interfaze
     use CanUseTrait;
     use HasProperties;
 
+    /**
+     * Interfaces this class should implement.
+     *
+     * @var array
+     */
+    public $implements = [];
+
     /** @var string */
     protected $_template = 'class.html.twig';
 
