@@ -38,7 +38,9 @@ return function () use ($trait) : Generator {
     
     /** defineProperty lets us set properties with visibility of our choice */
     yield function () use ($trait) {
-        $trait->defineProperty('user', null, 'private');
+        $trait->defineProperty('user', function ($property) {
+            $property->setVisibility('private');
+        });
         $result = $trait->render();
         assert(strpos($result, 'private $user'));
     };
