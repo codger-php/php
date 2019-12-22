@@ -9,21 +9,19 @@ trait HasProperties
      * means 'no initial value.
      *
      * @param string $name Name of the property. Omit the dollar sign.
+     * @param callable $callback Optional callback. The created property is
+     *  passed as argument for further processing.
      * @param string|null $default Optional initial value.
      * @param string $visibility `public`, `protected` or `private`. Defaults to
      *  `public`.
      * @param string|null $doccomment Optional doccomment.
      * @return Codger\Php\Objectesque
      */
-    public function defineProperty(string $name, string $default = null, string $visibility = 'public', string $doccomment = null) : Objectesque
+    public function defineProperty(string $name, callable $callback = null) : Objectesque
     {
-        $arguments = [$name, "--visibility=$visibility"];
-        if (!is_null($default)) {
-            $arguments[] = "--default=$default";
-        }
-        $property = new Property($arguments);
-        if ($doccomment) {
-            $property->setDoccomment($doccomment);
+        $property = new Property([$name]);
+        if (isset($callback)) {
+            $callback($property);
         }
         $property->execute();
         $this->_variables->properties[$name] = $property;
