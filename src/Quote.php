@@ -23,5 +23,21 @@ trait Quote
         }
         return "'".str_replace("'", "\'", $unquoted)."'";
     }
+
+    /**
+     * Internal helper to persist all options to twig, quoting the requested
+     * options for PHP.
+     *
+     * @param string ...$quote Names of options to quote.
+     */
+    protected function persistOptionsToTwig(string ...$quote) : void
+    {
+        parent::persistOptionsToTwig();
+        foreach ($this->_variables as $key => $value) {
+            if (in_array($key, $quote)) {
+                $this->set($key, $this->quote($value));
+            }
+        }
+    }
 }
 
