@@ -5,8 +5,17 @@ namespace Codger\Php;
 use Twig\{ Environment, Loader\FilesystemLoader, TwigFilter };
 use Codger\Generate;
 
+/**
+ * Abstract base recipe all PHP recipes should extend.
+ */
 abstract class Recipe extends Generate\Recipe
 {
+    /**
+     * Constructor.
+     *
+     * @param array|null $arguments
+     * @return void
+     */
     public function __construct(array $arguments = null)
     {
         parent::__construct($arguments);
@@ -29,14 +38,10 @@ abstract class Recipe extends Generate\Recipe
         $this->setTwigEnvironment($twig);
     }
 
-    protected function persistOptionsToTwig(string ...$quote) : void
+    public function render() : string
     {
-        parent::persistOptionsToTwig();
-        foreach ($this->_variables as $key => $value) {
-            if (in_array($key, $quote)) {
-                $this->set($key, $this->quote($value));
-            }
-        }
+        $result = parent::render();
+        return preg_replace("@\n(\s*)}@m", "\\1}", $result);
     }
 }
 
