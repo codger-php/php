@@ -5,6 +5,13 @@ namespace Codger\Php;
 trait CanUseTrait
 {
     /**
+     * Traits this object should `use`.
+     *
+     * @var array
+     */
+    public $usesTrait = [];
+
+    /**
      * Define which traits to `use`.
      *
      * @param string ...$traits
@@ -12,6 +19,6 @@ trait CanUseTrait
      */
     public function usesTraits(string ...$traits) : Objectesque
     {
-        return $this->set('uses_traits', $traits);
+        return $this->set('usesTrait', $traits);
     }
 }
