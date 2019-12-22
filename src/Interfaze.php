@@ -26,17 +26,22 @@ class Interfaze extends Objectesque
     }
 
     /**
-     * Define class constants. Should be passed as a hash of name/value pairs.
+     * Define class constant. The optional $callback is called with the new
+     * constant as it argument.
      *
-     * @param array $constants
+     * @param string $name
+     * @param mixed $value
+     * @param callable $callback
      * @return Codger\Php\Objectesque
      */
-    public function definesConstants(array $constants) : Objectesque
+    public function definesConstant(string $name, $value, callable $callback = null) : Objectesque
     {
-        foreach ($constants as &$constant) {
-            $constant = $this->quote($constant);
+        $constant = new Konstant([$name, '--value', $value]);
+        $constant->execute();
+        if (isset($callback)) {
+            $callback($constant);
         }
-        $this->_variables->constants += $constants;
+        $this->_variables->constants[$name] = $constant;
         return $this;
     }
 }
