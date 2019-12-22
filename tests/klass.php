@@ -73,7 +73,9 @@ return function () use ($klass) : Generator {
     
     /** defineProperty lets us set properties with visibility of our choice */
     yield function () use ($klass) {
-        $klass->defineProperty('user', null, 'private');
+        $klass->defineProperty('user', function ($property) {
+            $property->setVisibility('private');
+        });
         $result = $klass->render();
         assert(strpos($result, 'private $user'));
     };
