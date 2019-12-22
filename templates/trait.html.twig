@@ -13,8 +13,8 @@ use {{ namespace }};
 {% if doccomment %}{{ doccomment | formatDoccomment(0) }}{% endif %}
 trait {{ name }}
 {{ '{' }}
-{% if uses_traits %}
-{% for trait in uses_traits %}
+{% if usesTrait %}
+{% for trait in usesTrait %}
     use {{ trait }};
 {% endfor %}
 
