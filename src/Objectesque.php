@@ -135,7 +135,7 @@ abstract class Objectesque extends Recipe
                 $property = $property->render();
             }
         });
-        return preg_replace("@\n}\n$@m", "}\n", parent::render());
+        return parent::render();
     }
 
     /**
