@@ -52,7 +52,7 @@ class Property extends Recipe
      *  remove the initial value completely.
      * @return Codger\Php\Property
      */
-    public function setDetault($default = null) : Property
+    public function setDefault($default = null) : Property
     {
         if (isset($default)) {
             return $this->set('default', $this->quote($default));
