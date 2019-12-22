@@ -42,11 +42,11 @@ abstract class Recipe extends Generate\Recipe
      * Render the template, with stray whitespace cleaned up.
      *
      * @return string
+     * @see Codger\Generate\Recipe::render
      */
     public function render() : string
     {
-        $result = parent::render();
-        return preg_replace(["@\n\n(\s*)}@m", "@(\s*){\n\n@m"], ["\n\\1}", "\\1{\n"], $result);
+        return preg_replace(["@\n\n(\s*)}@m", "@(\s*){\n\n@m"], ["\n\\1}", "\\1{\n"], parent::render());
     }
 }
 
