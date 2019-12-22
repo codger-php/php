@@ -36,8 +36,7 @@ class Method extends Funktion
         if (!in_array($visibility, ['public', 'protected', 'private'])) {
             throw new DomainException("Visibility must be one of public, protected or private, not $visibility.");
         }
-        $this->_variables->visibility = $visibility;
-        return $this;
+        return $this->set('visibility', $visibility);
     }
 
     /**
