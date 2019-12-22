@@ -118,6 +118,8 @@ abstract class Objectesque extends Recipe
      */
     public function render() : string
     {
+        uasort($this->_variables->methods, [$this, 'sortByVisibility']);
+        uasort($this->_variables->properties, [$this, 'sortByVisibility']);
         array_walk($this->_variables->methods, function (&$method) {
             $method = $method->render();
         });
@@ -127,9 +129,48 @@ abstract class Objectesque extends Recipe
         return preg_replace("@\n}\n$@m", "}\n", parent::render());
     }
 
+    /**
+     * @param string $name
+     * @return void
+     */
     public function __invoke(string $name) : void
     {
         $this->output("$name.php");
+    }
+
+    /**
+     * Sort elements by visibility: public, protected, then private, with static
+     * before non-static.
+     *
+     * @param object $a
+     * @param object $b
+     * @return int -1, 0 or 1
+     */
+    private function sortByVisibility(object $a, object $b) : int
+    {
+        $va = $a->get('visibility');
+        $vb = $b->get('visibility');
+        if ($va == 'public' && $vb != 'public') {
+            return -1;
+        }
+        if ($va == 'protected' && $vb == 'private') {
+            return -1;
+        }
+        if ($vb == 'public' && $va != 'public') {
+            return 1;
+        }
+        if ($vb == 'protected' && $va == 'private') {
+            return 1;
+        }
+        $sa = $a->get('static');
+        $sb = $b->get('static');
+        if ($sa && !$sb) {
+            return -1;
+        }
+        if ($sb && !$sa) {
+            return 1;
+        }
+        return 0;
     }
 }
 
