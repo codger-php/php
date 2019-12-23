@@ -4,24 +4,24 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "299bba44bf2f4a7666c084e6f206207a",
+    "content-hash": "b2d12ff6ee9ed14495307ef8d7834dc2",
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.9.0",
+            "version": "0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "1c63062777068a2aecde633d2290df5f603c5e64"
+                "reference": "ee60754044431c3b7bd0bdcf3946c5ff348cc619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/1c63062777068a2aecde633d2290df5f603c5e64",
-                "reference": "1c63062777068a2aecde633d2290df5f603c5e64",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/ee60754044431c3b7bd0bdcf3946c5ff348cc619",
+                "reference": "ee60754044431c3b7bd0bdcf3946c5ff348cc619",
                 "shasum": ""
             },
             "require": {
-                "monolyth/cliff": "^0.5.1",
+                "monolyth/cliff": "^0.6.0",
                 "php": ">=7.3",
                 "twig/twig": "^2.7"
             },
@@ -49,7 +49,7 @@
                 }
             ],
             "description": "Code generator, base framework",
-            "time": "2019-12-22T14:01:24+00:00"
+            "time": "2019-12-23T11:21:57+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -421,16 +421,16 @@
         },
         {
             "name": "monolyth/cliff",
-            "version": "0.5.4",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/monolyth-php/cliff.git",
-                "reference": "22fd051995911186117454976db8ef9dd06d80bb"
+                "reference": "621ab4483a473244bf580207c2ce1d6a27148a80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/monolyth-php/cliff/zipball/22fd051995911186117454976db8ef9dd06d80bb",
-                "reference": "22fd051995911186117454976db8ef9dd06d80bb",
+                "url": "https://api.github.com/repos/monolyth-php/cliff/zipball/621ab4483a473244bf580207c2ce1d6a27148a80",
+                "reference": "621ab4483a473244bf580207c2ce1d6a27148a80",
                 "shasum": ""
             },
             "require": {
@@ -463,7 +463,7 @@
                 }
             ],
             "description": "Command line interface for Monolyth unframework",
-            "time": "2019-12-21T07:37:35+00:00"
+            "time": "2019-12-23T09:31:52+00:00"
         },
         {
             "name": "monomelodies/reflex",
@@ -1464,19 +1464,20 @@
         },
         {
             "name": "toast/unit",
-            "version": "2.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/toast-php/unit.git",
-                "reference": "3b992a32c895fd0eafd1a10335ec9a32004e39ac"
+                "reference": "6660c39c4a54b56aa1d0112dcd1077ec81bc2356"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/toast-php/unit/zipball/3b992a32c895fd0eafd1a10335ec9a32004e39ac",
-                "reference": "3b992a32c895fd0eafd1a10335ec9a32004e39ac",
+                "url": "https://api.github.com/repos/toast-php/unit/zipball/6660c39c4a54b56aa1d0112dcd1077ec81bc2356",
+                "reference": "6660c39c4a54b56aa1d0112dcd1077ec81bc2356",
                 "shasum": ""
             },
             "require": {
+                "monolyth/cliff": "^0.6.0",
                 "monomelodies/kingconf": "^1.1.0",
                 "php": ">=7.2",
                 "simoneast/simple-ansi-colors": "^1.0"
@@ -1501,7 +1502,7 @@
                 }
             ],
             "description": "Super-simple unit testing for PHP7",
-            "time": "2019-12-21T13:50:00+00:00"
+            "time": "2019-12-23T14:48:42+00:00"
         }
     ],
     "aliases": [],
