@@ -2,7 +2,9 @@
 
 use Codger\Php\Klass;
 use Codger\Php\Method;
+use Codger\Generate\FakeInOut;
 
+Klass::setInOut(new FakeInOut);
 $klass = new Klass(['Test']);
 
 /** Test Klass */
