@@ -120,21 +120,6 @@ abstract class Objectesque extends Recipe
     {
         uasort($this->_variables->methods, [$this, 'sortByVisibility']);
         uasort($this->_variables->properties, [$this, 'sortByVisibility']);
-        array_walk($this->_variables->constants, function (&$constant) {
-            if (!is_string($constant)) {
-                $constant = $constant->render();
-            }
-        });
-        array_walk($this->_variables->methods, function (&$method) {
-            if (!is_string($method)) {
-                $method = $method->render();
-            }
-        });
-        array_walk($this->_variables->properties, function (&$property) {
-            if (!is_string($property)) {
-                $property = $property->render();
-            }
-        });
         return parent::render();
     }
 
