@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "codger/generate": "^0.9.4",
+        "codger/generate": "^0.9.5",
         "composer/composer": "^1.7"
     },
     "autoload": {
