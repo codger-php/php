@@ -25,10 +25,11 @@ class Property extends Recipe
 
     /**
      * @param array|null $arguments
+     * @param Codger\Php\Recipe|null $parent
      */
-    public function __construct(array $arguments = null)
+    public function __construct(array $arguments = null, Recipe $parent = null)
     {
-        parent::__construct($arguments);
+        parent::__construct($arguments, $parent);
         $this->persistOptionsToTwig('default');
         if (!isset($this->visibility)) {
             $this->set('visibility', 'public');
