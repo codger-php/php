@@ -19,7 +19,7 @@ trait HasProperties
      */
     public function defineProperty(string $name, callable $callback = null) : Objectesque
     {
-        $property = new Property([$name]);
+        $property = new Property([$name], $this);
         if (isset($callback)) {
             $callback($property);
         }
