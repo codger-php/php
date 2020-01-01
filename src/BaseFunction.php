@@ -65,7 +65,7 @@ abstract class BaseFunction extends Recipe
             if ($parameter->isVariadic()) {
                 $arguments[] = '--variadic';
             }
-            $argument = new Argument($arguments);
+            $argument = new Argument($arguments, $this);
             $argument->execute();
             $this->addArgument($argument);
         }
