@@ -29,9 +29,9 @@ class Argument extends Recipe
 
     /**
      * @param array|null $arguments
-     *  quick definition.
+     * @param Codger\Php\Recipe|null $parent
      */
-    public function __construct(array $arguments = null)
+    public function __construct(array $arguments = null, Recipe $parent = null)
     {
         parent::__construct($arguments);
         // If the argument is optional (hence might accept null) OR a default
