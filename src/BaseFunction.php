@@ -16,12 +16,13 @@ abstract class BaseFunction extends Recipe
 
     /**
      * @param array|null $arguments
+     * @param Codger\Php\Recipe|null $parent
      * @param callable $declaration Optional argument and return type
      *  declaration closure (function can have empty body)
      */
-    public function __construct(array $arguments = null, callable $declaration = null)
+    public function __construct(array $arguments = null, Recipe $parent = null, callable $declaration = null)
     {
-        parent::__construct($arguments);
+        parent::__construct($arguments, $parent);
         if ($this instanceof Method) {
             $this->set('visibility', 'public');
         }
