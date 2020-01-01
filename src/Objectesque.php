@@ -83,7 +83,7 @@ abstract class Objectesque extends Recipe
      */
     public function addMethod(string $name, callable ...$callback) : Objectesque
     {
-        $method = new Method([$name, '--visibility=public'], isset($callback[1]) ? $callback[0] : null);
+        $method = new Method([$name, '--visibility=public'], $this, isset($callback[1]) ? $callback[0] : null);
         if (!isset($callback[0])) {
             $callback[0] = function () : string { return ''; };
         }
