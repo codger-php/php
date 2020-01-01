@@ -36,7 +36,7 @@ class Interfaze extends Objectesque
      */
     public function definesConstant(string $name, $value, callable $callback = null) : Objectesque
     {
-        $constant = new Konstant([$name, '--value', $value]);
+        $constant = new Konstant([$name, '--value', $value], $this);
         $constant->execute();
         if (isset($callback)) {
             $callback($constant);
