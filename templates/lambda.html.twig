@@ -1,4 +1,7 @@
+<?php
+
 {% if doccomment %}{{ doccomment | formatDoccomment }}{% endif %}
 return function ({{ arguments | raw }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %} {
 {{ body | raw }}
 };
+
