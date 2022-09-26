@@ -1,6 +1,9 @@
+<?php
+
 {% if doccomment %}{{ doccomment | formatDoccomment }}{% endif %}
 function {{ name }}({{ arguments | raw }}){% if returntype %} :{% if nullable %}?{% endif %} {{ returntype }}{% endif %}
 
 {
 {{ body | raw }}
 }
+
