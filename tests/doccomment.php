@@ -3,7 +3,7 @@
 $trait = new class(['Test']) extends Codger\Php\Recipe {
     use Codger\Php\Doccomment;
 
-    protected $_template = 'class.html.twig';
+    protected string $_template = 'class.html.twig';
 };
 
 /** Doccomment test */
