@@ -8,10 +8,10 @@ namespace Codger\Php;
 class Interfaze extends Objectesque
 {
     /** @var string */
-    public $extends;
+    public string $extends;
 
     /** @var string */
-    protected $_template = 'interface.html.twig';
+    protected string $_template = 'interface.html.twig';
 
     /**
      * Set the parent class. To unset, pass an empty string.
