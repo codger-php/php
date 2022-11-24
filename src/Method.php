@@ -10,20 +10,15 @@ class Method extends Funktion
 {
     use Doccomment;
 
-    /** @var string */
-    public $visibility;
+    public string $visibility;
 
-    /** @var bool */
-    public $static = false;
+    public bool $static = false;
 
-    /** @var bool */
-    public $final = false;
+    public bool $final = false;
 
-    /** @var bool */
-    public $abstract = false;
+    public bool $abstract = false;
 
-    /** @var string */
-    protected $_template = 'method.html.twig';
+    protected string $_template = 'method.html.twig';
 
     /**
      * Set the method's visibility.
@@ -31,7 +26,7 @@ class Method extends Funktion
      * @param string $visibility `public`, `protected` or `private`
      * @return Codger\Php\Method Itself
      */
-    public function setVisibility(string $visibility) : Method
+    public function setVisibility(string $visibility) : self
     {
         if (!in_array($visibility, ['public', 'protected', 'private'])) {
             throw new DomainException("Visibility must be one of public, protected or private, not $visibility.");
@@ -44,7 +39,7 @@ class Method extends Funktion
      *
      * @return Codger\Php\Method Itself
      */
-    public function isPrivate() : Method
+    public function isPrivate() : self
     {
         return $this->setVisibility('private');
     }
@@ -54,7 +49,7 @@ class Method extends Funktion
      *
      * @return Codger\Php\Method Itself
      */
-    public function isProtected() : Method
+    public function isProtected() : self
     {
         return $this->setVisibility('protected');
     }
@@ -64,7 +59,7 @@ class Method extends Funktion
      *
      * @return Codger\Php\Method Itself
      */
-    public function isPublic() : Method
+    public function isPublic() : self
     {
         return $this->setVisibility('public');
     }
@@ -75,7 +70,7 @@ class Method extends Funktion
      * @param bool $static Defaults to `true`
      * @return Codger\Php\Method Itself
      */
-    public function isStatic(bool $static = true) : Method
+    public function isStatic(bool $static = true) : self
     {
         return $this->set('static', $static);
     }
@@ -86,7 +81,7 @@ class Method extends Funktion
      * @param bool $final Defaults to `true`.
      * @return Codger\Php\Method Itself
      */
-    public function isFinal(bool $final = true) : Method
+    public function isFinal(bool $final = true) : self
     {
         $this->set('final', $final);
         return $this;
@@ -98,7 +93,7 @@ class Method extends Funktion
      * @param bool $abstract Defaults to `true`.
      * @return Codger\Php\Method Itself
      */
-    public function isAbstract(bool $abstract = true) : Method
+    public function isAbstract(bool $abstract = true) : self
     {
         $this->set('abstract', $abstract);
         return $this;
@@ -110,7 +105,7 @@ class Method extends Funktion
      * @param bool $body Defaults to `true`.
      * @return Codger\Php\Method Itself
      */
-    public function hasBody(bool $body = true) : Method
+    public function hasBody(bool $body = true) : self
     {
         $this->set('hasBody', $body);
         return $this;
