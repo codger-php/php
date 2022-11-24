@@ -9,7 +9,7 @@ trait CanUseTrait
      *
      * @var array
      */
-    public $usesTrait = [];
+    public array $usesTrait = [];
 
     /**
      * Define which traits to `use`.
