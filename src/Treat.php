@@ -10,7 +10,6 @@ class Treat extends Objectesque
     use CanUseTrait;
     use HasProperties;
 
-    /** @var string */
-    protected $_template = 'trait.html.twig';
+    protected string $_template = 'trait.html.twig';
 }
 
