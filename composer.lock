@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbb9189a6d10ce28711b4b9f730ffff5",
+    "content-hash": "7c8a9924d48167d8fcb9287aa2b879d1",
     "packages": [
         {
             "name": "codger/generate",
-            "version": "0.9.10",
+            "version": "0.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codger-php/generate.git",
-                "reference": "1139dd74e6fd35d2832fd35c294f8f3ea0217fa9"
+                "reference": "2273e4235a59909a4e81b2f2616af7046c0ebf49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codger-php/generate/zipball/1139dd74e6fd35d2832fd35c294f8f3ea0217fa9",
-                "reference": "1139dd74e6fd35d2832fd35c294f8f3ea0217fa9",
+                "url": "https://api.github.com/repos/codger-php/generate/zipball/2273e4235a59909a4e81b2f2616af7046c0ebf49",
+                "reference": "2273e4235a59909a4e81b2f2616af7046c0ebf49",
                 "shasum": ""
             },
             "require": {
                 "monolyth/cliff": "^0.7.1",
-                "php": ">=7.4",
+                "php": ">=8.1",
                 "twig/twig": "^2|^3"
             },
             "require-dev": {
@@ -51,9 +51,9 @@
             "description": "Code generator, base framework",
             "support": {
                 "issues": "https://github.com/codger-php/generate/issues",
-                "source": "https://github.com/codger-php/generate/tree/0.9.10"
+                "source": "https://github.com/codger-php/generate/tree/0.10.1"
             },
-            "time": "2021-01-10T17:56:20+00:00"
+            "time": "2022-11-24T14:50:42+00:00"
         },
         {
             "name": "composer/ca-bundle",
