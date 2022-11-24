@@ -39,14 +39,14 @@ EOT
         $composer->addDependency('monolyth/frontal', true);
         $c = json_decode(file_get_contents('composer.json'));
         assert(isset($c->{'require-dev'}));
-        assert(array_key_exists('monolyth/frontal', $c->{'require-dev'}));
+        assert(isset($c->{'require-dev'}->{'monolyth/frontal'}));
     };
     /** addDependency can add a dependency to `require` */
     yield function () use ($composer) : void {
         $composer->addDependency('monolyth/frontal');
         $c = json_decode(file_get_contents('composer.json'));
         assert(isset($c->require));
-        assert(array_key_exists('monolyth/frontal', $c->require));
+        assert(isset($c->require->{'monolyth/frontal'}));
     };
 
     /** addVcsRepository adds a repository */
