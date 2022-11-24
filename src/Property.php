@@ -12,16 +12,16 @@ class Property extends Recipe
     use Quote;
 
     /** @var string */
-    public $default;
+    public string $default;
 
     /** @var string */
-    public $visibility;
+    public string $visibility;
 
     /** @var bool */
-    public $static = false;
+    public bool $static = false;
 
     /** @var string */
-    protected $_template = 'property.html.twig';
+    protected string $_template = 'property.html.twig';
 
     /**
      * @param array|null $arguments
