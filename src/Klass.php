@@ -15,10 +15,10 @@ class Klass extends Interfaze
      *
      * @var array
      */
-    public $implements = [];
+    public array $implements = [];
 
     /** @var string */
-    protected $_template = 'class.html.twig';
+    protected string $_template = 'class.html.twig';
 
     /**
      * Define whether to mark the class as `final`.
@@ -26,7 +26,7 @@ class Klass extends Interfaze
      * @param bool $final Defaults to true.
      * @return Codger\Php\Klass
      */
-    public function isFinal(bool $final = true) : Klass
+    public function isFinal(bool $final = true) : self
     {
         $this->_variables->final = $final;
         return $this;
@@ -38,7 +38,7 @@ class Klass extends Interfaze
      * @param bool $abstract Defaults to true.
      * @return Codger\Php\Klass
      */
-    public function isAbstract(bool $abstract = true) : Klass
+    public function isAbstract(bool $abstract = true) : self
     {
         $this->_variables->abstract = $abstract;
         return $this;
@@ -50,7 +50,7 @@ class Klass extends Interfaze
      * @param string ...$interfaces
      * @return Codger\Php\Klass
      */
-    public function implementsInterfaces(string ...$interfaces) : Klass
+    public function implementsInterfaces(string ...$interfaces) : self
     {
         $this->_variables->implements = implode(', ', $interfaces);
        return $this;
