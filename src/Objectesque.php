@@ -8,12 +8,13 @@ abstract class Objectesque extends Recipe
     use Doccomment;
 
     /** @var array */
-    public $namespace = [];
+    public array $namespace = [];
+
     /** @var array */
-    public $usesNamespace = [];
+    public array $usesNamespace = [];
 
     /** @var string */
-    protected $_template;
+    protected string $_template;
 
     /**
      * Constructor.
@@ -36,7 +37,7 @@ abstract class Objectesque extends Recipe
      * @param string $namespace
      * @return Codger\Php\Objectesque
      */
-    public function setNamespace(string $namespace) : Objectesque
+    public function setNamespace(string $namespace) : self
     {
         if (strtolower($namespace) == 'global') {
             $namespace = null;
@@ -51,7 +52,7 @@ abstract class Objectesque extends Recipe
      * @param string ...$namespaces
      * @return Codger\Php\Objectesque
      */
-    public function usesNamespaces(string ...$namespaces) : Objectesque
+    public function usesNamespaces(string ...$namespaces) : self
     {
         $this->_variables->usesNamespace = $namespaces;
         return $this;
@@ -63,7 +64,7 @@ abstract class Objectesque extends Recipe
      * @param string $name
      * @return Codger\Php\Objectesque
      */
-    public function setName(string $name) : Objectesque
+    public function setName(string $name) : self
     {
         $this->_variables->name = $name;
         return $this;
@@ -81,14 +82,14 @@ abstract class Objectesque extends Recipe
      *  new method object, the optional first defining the signature.
      * @return Codger\Php\Objectesque
      */
-    public function addMethod(string $name, callable ...$callback) : Objectesque
+    public function addMethod(string $name, callable ...$callback) : self
     {
         $method = new Method([$name, '--visibility=public'], $this, isset($callback[1]) ? $callback[0] : null);
         if (!isset($callback[0])) {
             $callback[0] = function () : string { return ''; };
         }
         $body = $callback[isset($callback[1]) ? 1 : 0]($method);
-        if (strlen($body)) {
+        if (strlen($body ?? '')) {
             $method->setBody($body);
         }
         // In a pure interface we don't show the body, ever.
