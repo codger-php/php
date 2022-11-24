@@ -105,7 +105,7 @@ EOT
     yield function () use ($method) {
         $callable = function (string $user, string $pass = null) {};
         $result = $method->initFromClosure($callable)->render();
-        assert(strpos($result, 'public final abstract static function login(string $user, string $pass = null)') !== false);
+        assert(strpos($result, 'public final abstract static function login(string $user, ?string $pass = null)') !== false);
     };
 };
 
