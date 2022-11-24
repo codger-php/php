@@ -8,11 +8,9 @@ abstract class BaseFunction extends Recipe
 {
     use Doccomment;
 
-    /** @var string */
-    protected $_template;
+    protected string $_template;
 
-    /** @var array */
-    protected $_arguments = [];
+    protected array $_arguments = [];
 
     /**
      * @param array|null $arguments
