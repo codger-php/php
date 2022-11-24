@@ -4,8 +4,7 @@ namespace Codger\Php;
 
 class Funktion extends BaseFunction
 {
-    /** @var string */
-    protected $_template = 'function.html.twig';
+    protected string $_template = 'function.html.twig';
 
     public function __invoke(string $name) : void
     {
