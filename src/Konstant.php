@@ -12,10 +12,10 @@ class Konstant extends Recipe
     use Quote;
 
     /** @var string */
-    public $value;
+    public string $value;
 
     /** @var string */
-    protected $_template = 'constant.html.twig';
+    protected string $_template = 'constant.html.twig';
 
     /**
      * @param array|null $arguments
