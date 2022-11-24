@@ -9,23 +9,17 @@ class Argument extends Recipe
     use Doccomment;
     use Quote;
 
-    /** @var bool */
-    public $variadic = false;
+    public bool $variadic = false;
 
-    /** @var bool */
-    public $optional = false;
+    public bool $optional = false;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    /** @var string */
-    public $default;
+    public string $default;
 
-    /** @var bool */
-    public $reference = false;
+    public bool $reference = false;
 
-    /** @var string */
-    protected $_template = 'argument.html.twig';
+    protected string $_template = 'argument.html.twig';
 
     /**
      * @param array|null $arguments
@@ -56,7 +50,7 @@ class Argument extends Recipe
      * @param bool $variadic Defaults to `true`
      * @return Codger\Php\Argument Itself
      */
-    public function isVariadic(bool $variadic = true) : Argument
+    public function isVariadic(bool $variadic = true) : self
     {
         return $this->set('variadic', $variadic);
     }
