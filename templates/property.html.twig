@@ -1,2 +1,2 @@
 {% if doccomment %}{{ doccomment | formatDoccomment }}{% endif %}
-    {{ visibility }} ${{ name }}{% if default != 'null' %} = {{ default | raw }}{% endif %};
+    {{ visibility }}{% if type %} {{ type }}{% endif %} ${{ name }}{% if hasDefault %} = {% if default != 'null' %}{{ default | raw }}{% else %}null{% endif %}{% endif %};
