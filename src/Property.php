@@ -11,16 +11,14 @@ class Property extends Recipe
     use Doccomment;
     use Quote;
 
-    /** @var string */
     public string $default;
 
-    /** @var string */
     public string $visibility;
 
-    /** @var bool */
     public bool $static = false;
 
-    /** @var string */
+    public string $type;
+
     protected string $_template = 'property.html.twig';
 
     /**
@@ -30,9 +28,12 @@ class Property extends Recipe
     public function __construct(array $arguments = null, Recipe $parent = null)
     {
         parent::__construct($arguments, $parent);
-        $this->persistOptionsToTwig('default');
         if (!isset($this->visibility)) {
             $this->set('visibility', 'public');
+        }
+        $this->persistOptionsToTwig();
+        if (isset($this->default)) {
+            $this->setDefault($this->default);
         }
     }
 
@@ -51,12 +52,21 @@ class Property extends Recipe
     }
 
     /**
-     * @param mixed $default The initial value of the property. Pass null to
-     *  remove the initial value completely.
+     * @param string $type
      * @return Codger\Php\Property
      */
-    public function setDefault($default = null) : Property
+    public function setType(string $type) : Property
     {
+        return $this->set('type', $type);
+    }
+
+    /**
+     * @param mixed $default The initial value of the property.
+     * @return Codger\Php\Property
+     */
+    public function setDefault(mixed $default = null) : Property
+    {
+        $this->set('hasDefault', true);
         if (isset($default)) {
             return $this->set('default', $this->quote($default));
         } else {
