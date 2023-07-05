@@ -41,8 +41,12 @@ abstract class BaseFunction extends Recipe
         $reflection = new ReflectionFunction($declaration);
         if ($reflection->hasReturnType()) {
             $return = $reflection->getReturnType();
-            $this->set('returntype', $return);
             $this->set('nullable', $return->allowsNull());
+            $return = "$return";
+            if ($return[0] == '?') {
+                $return = substr($return, 1);
+            }
+            $this->set('returntype', $return);
         } else {
             $this->set('returntype', null);
             $this->set('nullable', null);
